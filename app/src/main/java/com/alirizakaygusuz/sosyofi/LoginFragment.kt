@@ -1,31 +1,25 @@
 package com.alirizakaygusuz.sosyofi
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.Navigation
 import com.alirizakaygusuz.sosyofi.databinding.FragmentLoginBinding
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.Volley
-import org.json.JSONObject
 
 
-class LoginFragment : Fragment() {
+class LoginFragment() : Fragment() {
 
-    private lateinit var constraintLayout: ConstraintLayout
 
     private lateinit var binding: FragmentLoginBinding
 
 
-    private lateinit var myQueue: RequestQueue
+    //private val URL = "http://localhost/php-auth/PHP-Web/signup.php"
 
-    private lateinit var myListener: Response.Listener<JSONObject>
+    private val URL = "http://localhost/php-auth/PHP-Web/includes/login.inc.php"
 
-    private val myUrlGet = "https://reqres.in/api/users?page=2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +31,13 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater , container , false)
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
 
         binding.txtLoginRegister.setOnClickListener { view ->
@@ -64,8 +56,22 @@ class LoginFragment : Fragment() {
         Navigation.findNavController(view).navigate(action)
     }
 
+
     fun click_btnRSecondOK(view: View) {
+        val email: String = binding.txtLoginEmail.text.toString()
+        val password: String = binding.txtLoginPassword.text.toString()
+
+        val user: User = User(email = email, hashed_password = password)
+
+
+
 
     }
+
+
+
+
+
+
 
 }

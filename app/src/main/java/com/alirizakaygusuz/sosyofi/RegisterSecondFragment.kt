@@ -1,6 +1,7 @@
 package com.alirizakaygusuz.sosyofi
 
 import android.app.Application
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -20,25 +21,16 @@ import org.json.JSONObject
 import java.lang.Exception
 
 
-class RegisterSecondFragment : Fragment() {
+class RegisterSecondFragment: Fragment() {
 
     private lateinit var binding: FragmentRegisterSecondBinding
 
     private lateinit var user: User
 
 
-    private val appContext = context?.applicationContext
-
-    private lateinit var myQueue: RequestQueue
-
-    private lateinit var myListener: Response.Listener<JSONObject>
-    private lateinit var myErrorListener: Response.ErrorListener
-
-
-   // private val myUrlGet = "https://reqres.in/api/users?page=2"
-
     //private val URL = "http://localhost/php-auth/PHP-Web/signup.php"
-    private val URL = "http://192.168.1.104/php-auth/PHP-Web/includes/signup.inc.php"
+    private val URL = "http://localhost/php-auth/PHP-Web/includes/signup.inc.php"
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +49,7 @@ class RegisterSecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
 
 
@@ -96,7 +89,7 @@ class RegisterSecondFragment : Fragment() {
             user = User(userName, firstName, lastName, email, password)
 
             user?.let {
-                postUser(it)
+                postUserRegister(it)
             }
         }
 
@@ -109,7 +102,7 @@ class RegisterSecondFragment : Fragment() {
     }
 
 
-    fun postUser(user: User){
+    fun postUserRegister(user: User){
 
         val request = object : StringRequest(Method.POST,URL,Response.Listener { reply ->
 
@@ -135,6 +128,4 @@ class RegisterSecondFragment : Fragment() {
         Volley.newRequestQueue(activity).add(request)
 
     }
-
-
 }
