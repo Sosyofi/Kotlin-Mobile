@@ -2,6 +2,7 @@ package com.alirizakaygusuz.sosyofi
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -88,6 +89,10 @@ class RegisterSecondFragment: Fragment() {
 
             user?.let {
                 postUserRegister(it)
+
+
+                val intent =  Intent(context , UserMainActivity:: class.java)
+                context?.startActivity(intent)
             }
         }
 

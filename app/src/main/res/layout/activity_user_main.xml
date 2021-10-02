@@ -78,6 +78,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/custom_row_pink"
             app:srcCompat="@drawable/custom_circle_background" />
 
         <TextView

@@ -1,6 +1,7 @@
 package com.alirizakaygusuz.sosyofi
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -64,6 +65,8 @@ class LoginFragment() : Fragment() {
         val user: User = User(email = email, hashed_password = password)
 
 
+        val intent =  Intent(context , UserMainActivity:: class.java)
+        context?.startActivity(intent)
 
 
     }
