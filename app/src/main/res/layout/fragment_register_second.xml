@@ -144,7 +144,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtILayoutLoginUsername"
+            android:id="@+id/txtILayoutRSecondFirstName"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -158,7 +158,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtLoginUsername"
+                android:id="@+id/txtRSecondFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/custom_textfield"
@@ -169,7 +169,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtILayoutRSecondSurname"
+            android:id="@+id/txtILayoutRSecondLastName"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -179,10 +179,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtILayoutLoginUsername">
+            app:layout_constraintTop_toBottomOf="@+id/txtILayoutRSecondFirstName">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtRSecondSurname"
+                android:id="@+id/txtRSecondLastNamee"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/custom_textfield"
@@ -201,7 +201,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtILayoutRSecondSurname">
+            app:layout_constraintTop_toBottomOf="@+id/txtILayoutRSecondLastName">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtRSecondUsername"
@@ -213,7 +213,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnOK"
+            android:id="@+id/btnRSecondOK"
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_marginBottom="24dp"

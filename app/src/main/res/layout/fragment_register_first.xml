@@ -149,7 +149,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
 
-            android:id="@+id/txtILayoutLoginUsername"
+            android:id="@+id/txtILayoutRFirstEmail"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginTop="35dp"
@@ -163,22 +163,18 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtLoginUsername"
+                android:id="@+id/txtRFirstEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/custom_textfield"
                 android:backgroundTint="#EDEDED"
                 android:elevation="20dp"
                 android:maxLength="50"
-                android:shadowColor="#060606"
-                android:shadowDx="10"
-                android:shadowDy="5"
-                android:shadowRadius="20"
                 android:visibility="visible" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtILayoutRSecondSurname"
+            android:id="@+id/txtILayoutRFirstPassword"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginTop="35dp"
@@ -191,11 +187,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtILayoutLoginUsername"
+            app:layout_constraintTop_toBottomOf="@+id/txtILayoutRFirstEmail"
             app:startIconDrawable="@drawable/ic_lock">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtRSecondSurname"
+                android:id="@+id/txtRFirstPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/custom_textfield"

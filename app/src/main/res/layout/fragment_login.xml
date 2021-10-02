@@ -158,7 +158,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtILayoutRSecondSurname"
+            android:id="@+id/txtILayoutLoginPassword"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginTop="35dp"
@@ -173,7 +173,7 @@
             app:startIconDrawable="@drawable/ic_lock">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtRSecondSurname"
+                android:id="@+id/txtLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/custom_textfield"
@@ -184,7 +184,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnOK"
+            android:id="@+id/btnLoginOK"
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_marginBottom="24dp"

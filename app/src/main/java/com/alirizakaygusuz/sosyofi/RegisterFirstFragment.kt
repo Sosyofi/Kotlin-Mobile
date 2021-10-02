@@ -64,12 +64,20 @@ class RegisterFirstFragment : Fragment() {
 
 
     fun click_btnRFirstOK(view: View) {
-        val action =  RegisterFirstFragmentDirections.actionRegisterFirstFragmentToRegisterSecondFragment()
+
+        val email: String = binding.txtRFirstEmail.text.toString()
+        val password: String = binding.txtRFirstPassword.text.toString()
+
+        val action =  RegisterFirstFragmentDirections.actionRegisterFirstFragmentToRegisterSecondFragment(email , password)
         Navigation.findNavController(view).navigate(action)
 
     }
 
     fun click_txtRFirstLogin(view: View) {
+
+
+
+
         val action = RegisterFirstFragmentDirections.actionRegisterFirstFragmentToLoginFragment()
         Navigation.findNavController(view).navigate(action)
     }
