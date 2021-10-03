@@ -23,7 +23,7 @@ import org.json.JSONObject
 import java.lang.Exception
 
 
-class RegisterSecondFragment: Fragment() {
+class RegisterSecondFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterSecondBinding
 
@@ -32,7 +32,6 @@ class RegisterSecondFragment: Fragment() {
 
     //private val URL = "http://localhost/php-auth/PHP-Web/signup.php"
     private val URL = "http://192.168.1.104/php-auth/PHP-Web/includes/signup.inc.php"
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,42 +75,57 @@ class RegisterSecondFragment: Fragment() {
         val email: String
         val password: String
 
-        val firstName: String = binding.txtRSecondFirstName.text.toString()
-        val lastName: String = binding.txtRSecondLastNamee.text.toString()
-        val userName: String = binding.txtRSecondUsername.text.toString()
+        val firstName: String = binding.txtRSecondFirstName.text.toString().trim()
+        val lastName: String = binding.txtRSecondLastNamee.text.toString().trim()
+        val userName: String = binding.txtRSecondUsername.text.toString().trim()
 
-        arguments?.let {
-            email = RegisterSecondFragmentArgs.fromBundle(it).email
-            password = RegisterSecondFragmentArgs.fromBundle(it).password
-            //val hash_password = password.hashCode()
-            Log.i("Ratata:", "$email  $password")
-            user = User(userName, firstName, lastName, email, password)
+        //var control
 
-            user?.let {
-                postUserRegister(it)
+        if (!firstName.isValidTextControl(firstName) || !lastName.isValidTextControl(lastName)) {
+            Toast.makeText(context, "İsminiz ve Soyisminiz Sadece Harflerden Oluşmalıdır!!", Toast.LENGTH_SHORT)
+                .show()
+        } else if (firstName.isValidTextControl(firstName) && lastName.isValidTextControl(lastName)) {
+            if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty()) {
+                Toast.makeText(context, "Tüm Alanları Doldurunuz!!", Toast.LENGTH_SHORT).show()
+            } else {
+                arguments?.let {
+                    email = RegisterSecondFragmentArgs.fromBundle(it).email
+                    password = RegisterSecondFragmentArgs.fromBundle(it).password
+                    //val hash_password = password.hashCode()
+                    Log.i("Ratata:", "$email  $password")
+                    user = User(userName, firstName, lastName, email, password)
+
+                    user?.let {
+                        postUserRegister(it)
 
 
-                val intent =  Intent(context , UserMainActivity:: class.java)
-                context?.startActivity(intent)
+                        val intent = Intent(context, UserMainActivity::class.java)
+
+                        context?.startActivity(intent)
+                    }
+                }
+
+                Log.i("User:", user.toString())
+
             }
+
         }
 
-        Log.i("User:",user.toString())
 
     }
 
 
-    fun postUserRegister(user: User){
+    fun postUserRegister(user: User) {
 
-        val request = object : StringRequest(Method.POST,URL,Response.Listener { reply ->
+        val request = object : StringRequest(Method.POST, URL, Response.Listener { reply ->
 
-            Log.i("User Add Reply :",reply)
+            Log.i("User Add Reply :", reply)
 
-        },Response.ErrorListener { e -> e.printStackTrace() }){
+        }, Response.ErrorListener { e -> e.printStackTrace() }) {
 
             override fun getParams(): MutableMap<String, String> {
 
-                val params = HashMap<String,String>()
+                val params = HashMap<String, String>()
 
                 params["nickname"] = user.nickname
                 params["first_name"] = user.first_name

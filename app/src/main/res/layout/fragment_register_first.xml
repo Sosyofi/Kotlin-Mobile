@@ -43,9 +43,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="-250dp"
-        android:background="@drawable/custom_circle_background"
+        android:background="@drawable/custom_rightcircle_rfirst_background"
 
-        android:backgroundTint="@color/custom_purple"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio=":1"
@@ -61,8 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="-250dp"
-        android:background="@drawable/custom_circle_background"
-        android:backgroundTint="@color/custom_orange"
+        android:background="@drawable/custom_leftcircle_rfirst_background"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio=":1"
@@ -167,8 +165,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/custom_textfield"
-                android:backgroundTint="#EDEDED"
+                android:backgroundTint="#33000000"
                 android:elevation="20dp"
+                android:inputType="textEmailAddress"
                 android:maxLength="50"
                 android:visibility="visible" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -180,7 +179,6 @@
             android:layout_marginTop="35dp"
             android:elevation="50dp"
             android:hint="Parola"
-
             android:visibility="visible"
             app:counterMaxLength="30"
             app:endIconMode="password_toggle"
@@ -190,15 +188,17 @@
             app:layout_constraintTop_toBottomOf="@+id/txtILayoutRFirstEmail"
             app:startIconDrawable="@drawable/ic_lock">
 
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtRFirstPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/custom_textfield"
-                android:backgroundTint="#EDEDED"
+                android:backgroundTint="#33000000"
                 android:inputType="textPassword"
                 android:maxLength="30"
                 android:visibility="visible" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.alirizakaygusuz.sosyofi.databinding.FragmentLoginBinding
 
@@ -59,22 +60,35 @@ class LoginFragment() : Fragment() {
 
 
     fun click_btnRSecondOK(view: View) {
-        val email: String = binding.txtLoginEmail.text.toString()
-        val password: String = binding.txtLoginPassword.text.toString()
 
-        val user: User = User(email = email, hashed_password = password)
+        //val user: User = User(email = email, hashed_password = password)
+
+        val email: String = binding.txtLoginEmail.text.toString().trim()
+        val password: String = binding.txtLoginPassword.text.toString().trim()
+
+        if (email.isEmpty() && password.isEmpty()) {
+            Toast.makeText(context, "Tüm Alanları Doldurunuz", Toast.LENGTH_SHORT).show()
+        } else if (email.isEmpty()) {
+            Toast.makeText(context, "Email Alanını Boş Bırakmayınız!!", Toast.LENGTH_SHORT).show()
+        } else if (password.isEmpty()) {
+            Toast.makeText(context, "Şifre Alanını Boş Bırakılmamalıdır!!", Toast.LENGTH_SHORT).show()
+        } else if (!email.isEmpty() && !password.isEmpty()) {
 
 
-        val intent =  Intent(context , UserMainActivity:: class.java)
-        context?.startActivity(intent)
+
+            if(email.isValidEmail()){
+                val intent = Intent(context, UserMainActivity::class.java)
+                context?.startActivity(intent)
+            }else{
+                Toast.makeText(context, "Geçerli Bir Email Giriniz!!", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+
+        }
 
 
     }
-
-
-
-
-
 
 
 }

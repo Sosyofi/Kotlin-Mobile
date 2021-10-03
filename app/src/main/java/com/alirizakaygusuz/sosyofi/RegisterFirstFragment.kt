@@ -6,17 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
-
 import com.alirizakaygusuz.sosyofi.databinding.FragmentRegisterFirstBinding
+import android.text.style.UnderlineSpan
+
+import android.text.SpannableString
+
+import android.R
+import android.text.TextUtils
+import android.util.Patterns
+
+import android.widget.TextView
 
 
 
 
 
 class RegisterFirstFragment : Fragment() {
-
-
 
 
     private lateinit var binding: FragmentRegisterFirstBinding
@@ -31,7 +38,7 @@ class RegisterFirstFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentRegisterFirstBinding.inflate(inflater , container , false)
+        binding = FragmentRegisterFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -39,21 +46,10 @@ class RegisterFirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // val rightConstraintLayout = getView()?.findViewById(R.id.constraintLeftRFirst) as ConstraintLayout
 
 
 
-
-
-
-
-
-
-
-
-
-
-        binding.btnRFirstOK.setOnClickListener { view->
+        binding.btnRFirstOK.setOnClickListener { view ->
             click_btnRFirstOK(view)
         }
 
@@ -65,23 +61,44 @@ class RegisterFirstFragment : Fragment() {
 
     fun click_btnRFirstOK(view: View) {
 
-        val email: String = binding.txtRFirstEmail.text.toString()
-        val password: String = binding.txtRFirstPassword.text.toString()
+        val email: String = binding.txtRFirstEmail.text.toString().trim()
+        val password: String = binding.txtRFirstPassword.text.toString().trim()
 
-        val action =  RegisterFirstFragmentDirections.actionRegisterFirstFragmentToRegisterSecondFragment(email , password)
-        Navigation.findNavController(view).navigate(action)
+        if (email.isEmpty() && password.isEmpty()) {
+            Toast.makeText(context, "Tüm Alanları Doldurunuz!!", Toast.LENGTH_SHORT).show()
+        } else if (email.isEmpty()) {
+            Toast.makeText(context, "Email Alanını Boş Bırakmayınız!!", Toast.LENGTH_SHORT).show()
+        } else if (password.isEmpty()) {
+            Toast.makeText(context, "Şifre Alanını Boş Bırakılmamalıdır!!", Toast.LENGTH_SHORT)
+                .show()
+        } else if (!email.isEmpty() && !password.isEmpty()) {
+
+
+            if(email.isValidEmail()){
+                val action =
+                    RegisterFirstFragmentDirections.actionRegisterFirstFragmentToRegisterSecondFragment(
+                        email,
+                        password)
+                Navigation.findNavController(view).navigate(action)
+            }else{
+                Toast.makeText(context, "Geçerli Bir Email Giriniz!!", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+
+
+
+        }
+
 
     }
 
     fun click_txtRFirstLogin(view: View) {
 
 
-
-
         val action = RegisterFirstFragmentDirections.actionRegisterFirstFragmentToLoginFragment()
         Navigation.findNavController(view).navigate(action)
     }
-
 
 
 
