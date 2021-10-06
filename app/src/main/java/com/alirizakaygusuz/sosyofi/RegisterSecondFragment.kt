@@ -100,7 +100,6 @@ class RegisterSecondFragment : Fragment() {
 
 
                         val intent = Intent(context, UserMainActivity::class.java)
-
                         context?.startActivity(intent)
                     }
                 }

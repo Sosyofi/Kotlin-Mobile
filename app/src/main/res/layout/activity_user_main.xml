@@ -4,16 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/color_2change"
+    android:background="@drawable/usermain_background"
     tools:context=".UserMainActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintSearch"
@@ -22,37 +14,16 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5">
-
-        <TextView
-            android:id="@+id/search"
-            android:layout_width="201dp"
-            android:layout_height="33dp"
-            android:ems="10"
-            android:hint="Search"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="2dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/constraintSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +34,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintGuide_percent="0.119878605" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintTop"
@@ -125,7 +96,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/custom_leftcircle_rfirst_background" />
+          />
 
         <TextView
             android:id="@+id/textView6"
@@ -235,7 +206,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="visible"
-            app:layout_constraintGuide_percent="0.39" />
+            app:layout_constraintGuide_begin="33dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -321,7 +292,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintGuide_percent="0.28983307" />
+        app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -329,7 +300,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintGuide_percent="0.4188164" />
+        app:layout_constraintGuide_percent="0.32" />
 
 
     <androidx.recyclerview.widget.RecyclerView
