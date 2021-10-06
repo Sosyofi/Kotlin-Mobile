@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Sosyofi"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SocialActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BiographyActivity"
+            android:exported="true" />
+        <activity
             android:name=".UserMainActivity"
             android:exported="true" />
         <activity

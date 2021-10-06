@@ -13,5 +13,9 @@
     <color name="custom_blue">#29CCFF</color>
     <color name="custom_row_purple">#460878</color>
     <color name="custom_row_pink">#E18787</color>
+    <color name="custom_green">#A4E187</color>
+    <color name="custom_twitch_purple">#460878</color>
+    <color name="custom_twitch_green">#1CE56C</color>
+    <color name="custom_twitch_red">#E51C1C</color>
 
 </resources>

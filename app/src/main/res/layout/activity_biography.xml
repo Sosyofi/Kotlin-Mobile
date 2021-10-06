@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BiographyActivity"
+    android:background="@drawable/userbio_background">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarTwitch"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBioLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+
+    <ImageView
+        android:id="@+id/imvBioUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch"
+        app:srcCompat="@drawable/custom_userimage" />
+
+
+
+
+    <TextView
+        android:id="@+id/txtTwitchFollowers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="35dp"
+        android:text="237"
+        android:textColor="#0A9F8E"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imvBioUser"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="35dp"
+        android:text="takipçi"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/txtTwitchFollowers"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:text="takip"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/txtTwitchFollowed"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/txtTwitchFollowed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="15dp"
+        android:text="28"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imvBioUser"
+        app:layout_constraintTop_toBottomOf="@+id/txtTwitchFollowers" />
+
+    <TextView
+        android:id="@+id/txtBioBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="24dp"
+        android:rotation="0"
+        android:rotationX="0"
+        android:rotationY="0"
+        android:text="M\ne\nr\nh\na\nb\na\n\n\nS\nS\no\ns\ny\no\nf\ni\n"
+        android:textAlignment="center"
+        android:textColor="#FFFCFC"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioRight"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
+
+    <TextView
+        android:id="@+id/txtFollowedName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="21dp"
+        android:text="Bio"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imvBioUser" />
+
+    <TextView
+        android:id="@+id/txtTwitchInfo"
+        android:layout_width="249dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="31dp"
+        android:gravity="center"
+        android:text="Frontend Dev Photographer Dig. Creator"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioBottom"
+        app:layout_constraintStart_toEndOf="@+id/txtFollowedName"
+        app:layout_constraintTop_toBottomOf="@+id/imvBioUser" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBioRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textILayoutBioTwitch"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:hint="Twitch"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioBottom"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/txtTwitchInfo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtBioTwitch"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_textfield" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textILayoutBioUnsplash"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:hint="Unsplash"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/textILayoutBioTwitch">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtBioUnsplash"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_textfield" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textILayoutBioInstagram"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:hint="Instagram"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioBottom"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/textILayoutBioUnsplash">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtBioInstagram"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_textfield" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textILayoutBioTwitter"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:hint="Twitter"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioBottom"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/textILayoutBioInstagram">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtBioTwitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_textfield" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnBioOnayla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/custom_button"
+        android:text="Onayla"
+        android:textColor="#101010"
+        app:backgroundTint="#83ED80"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
