@@ -127,15 +127,64 @@ class LoginFragment() : Fragment() {
                     val userJson = userList.getJSONObject(i)
 
 
+                    user.set(userJson.getInt("id"))
                     user.first_name = userJson.getString("first_name")
                     user.last_name = userJson.getString("last_name")
                     user.email = userJson.getString("email")
                     user.nickname = userJson.getString("nickname")
-                    user.instagram = userJson.getString("instagram")
-                    user.twitch = userJson.getString("twitch")
-                    user.twitter = userJson.getString("twitter")
-                    user.unsplash =  userJson.getString("unsplash")
-                    user.bio = userJson.getString("bio")
+
+                     userJson.getString("instagram").equals("null").let { result->
+                         if(result){
+                             user.instagram = ""
+                         }else{
+                             user.instagram =  userJson.getString("instagram")
+                         }
+
+                     }
+
+
+
+                    userJson.getString("twitch").equals("null").let { result->
+
+                        if(result){
+                            user.twitch = ""
+                        }else{
+                            user.twitch = userJson.getString("twitch")
+
+                        }
+
+                    }
+
+                    userJson.getString("twitter").equals("null").let { result->
+                        if(result){
+                            user.twitter = ""
+                        }else{
+                            user.twitter = userJson.getString("twitter")
+
+                        }
+
+                    }
+
+                    userJson.getString("unsplash").equals("null").let { result->
+                        if(result){
+                            user.unsplash = ""
+                        }else{
+                            user.unsplash = userJson.getString("unsplash")
+
+                        }
+
+                    }
+
+                    userJson.getString("bio").equals("null").let { result->
+                        if(result){
+                            user.bio = ""
+                        }else{
+                            user.bio =  userJson.getString("bio")
+
+                        }
+
+
+                    }
 
                     user.followers_count = userJson.getInt("followers_count")
                     user.followed_count = userJson.getInt("followed_count")
@@ -144,7 +193,7 @@ class LoginFragment() : Fragment() {
                     val control = userJson.getString("followers")
 
                     Log.i("Deneme0", control)
-                    
+
                     if(!control.equals("null")){
                         val followerUserJsonObject= userJson.getJSONObject("followers")
 
@@ -154,6 +203,7 @@ class LoginFragment() : Fragment() {
                         for (i in 0 until followerUserJsonArray.length()) {
                             val followerUserJson = followerUserJsonArray.getJSONObject(i)
 
+                            followerUser.set(userJson.getInt("id"))
                             followerUser.first_name = followerUserJson.getString("first_name")
                             followerUser.last_name = followerUserJson.getString("last_name")
                             followerUser.email = followerUserJson.getString("email")
@@ -172,8 +222,6 @@ class LoginFragment() : Fragment() {
                         }
 
                     }
-
-
 
 
                     //followerList.add(follower)

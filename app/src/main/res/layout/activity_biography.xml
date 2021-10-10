@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BiographyActivity"
-    android:background="@drawable/userbio_background">
+    android:background="@drawable/userbio_background"
+    tools:context=".BiographyActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -120,6 +120,7 @@
         android:layout_width="264dp"
         android:layout_height="62dp"
         android:layout_marginTop="28dp"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
         app:layout_constraintStart_toEndOf="@+id/txtFollowedName"
         app:layout_constraintTop_toBottomOf="@+id/imvBioUser">
@@ -152,6 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="Twitch"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/txtFollowedName">
@@ -169,6 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="Unsplash"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/textILayoutBioTwitch">
@@ -186,6 +189,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="Instagram"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/textILayoutBioUnsplash">
@@ -203,6 +207,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:hint="Twitter"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/textILayoutBioInstagram">
@@ -226,8 +231,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

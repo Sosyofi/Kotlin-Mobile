@@ -3,8 +3,20 @@ package com.alirizakaygusuz.sosyofi
 import java.io.Serializable
 import java.sql.Blob
 
-data class User( var nickname: String = ""  , var first_name: String = "" ,var last_name: String = "", var email: String = "",  var hashed_password: String = "" , var instagram: String = "", var twitch: String = "",var twitter: String = "", var unsplash: String= "" , var bio: String = "" ,var followers_count:Int = 0 , var followed_count: Int = 0): Serializable
-{
+data class User(
+    var nickname: String = "",
+    var first_name: String = "",
+    var last_name: String = "",
+    var email: String = "",
+    var hashed_password: String = "",
+    var instagram: String = "",
+    var twitch: String = "",
+    var twitter: String = "",
+    var unsplash: String = "",
+    var bio: String = "",
+    var followers_count: Int = 0,
+    var followed_count: Int = 0,
+) : Serializable {
 
 
     constructor() : this(email = "", hashed_password = "") {
@@ -12,16 +24,20 @@ data class User( var nickname: String = ""  , var first_name: String = "" ,var l
     }
 
 
+    var user_id: Int = 0
+    fun get(): Int {
+        return user_id
+    }
 
-    private val user_id: Int
-        get() {
-            TODO()
-        }
+    fun set(id: Int) {
+        user_id = id
+    }
+
+
     private val picture: Blob?
         get() {
             TODO()
         }
-
 
 
 }
