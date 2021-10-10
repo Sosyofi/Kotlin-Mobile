@@ -20,28 +20,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineBioLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.01" />
-
 
     <ImageView
         android:id="@+id/imvBioUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch"
         app:srcCompat="@drawable/custom_userimage" />
 
-
-
-
     <TextView
-        android:id="@+id/txtTwitchFollowers"
+        android:id="@+id/txtBioFollowers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -62,7 +53,7 @@
         android:text="takipçi"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/txtTwitchFollowers"
+        app:layout_constraintStart_toEndOf="@+id/txtBioFollowers"
         app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
 
     <TextView
@@ -74,11 +65,11 @@
         android:text="takip"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/txtTwitchFollowed"
+        app:layout_constraintStart_toEndOf="@+id/txtBioFollowed"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
-        android:id="@+id/txtTwitchFollowed"
+        android:id="@+id/txtBioFollowed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -88,10 +79,10 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imvBioUser"
-        app:layout_constraintTop_toBottomOf="@+id/txtTwitchFollowers" />
+        app:layout_constraintTop_toBottomOf="@+id/txtBioFollowers" />
 
     <TextView
-        android:id="@+id/txtBioBottom"
+        android:id="@+id/txtBioRight"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="45dp"
@@ -102,7 +93,7 @@
         android:text="M\ne\nr\nh\na\nb\na\n\n\nS\nS\no\ns\ny\no\nf\ni\n"
         android:textAlignment="center"
         android:textColor="#FFFCFC"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,48 +102,58 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
 
     <TextView
-        android:id="@+id/txtFollowedName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="21dp"
-        android:text="Bio"
-        android:textColor="#FFFFFF"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imvBioUser" />
-
-    <TextView
         android:id="@+id/txtTwitchInfo"
-        android:layout_width="249dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="31dp"
+        android:layout_width="251dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="21dp"
         android:gravity="center"
         android:text="Frontend Dev Photographer Dig. Creator"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/txtBioBottom"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/txtFollowedName"
         app:layout_constraintTop_toBottomOf="@+id/imvBioUser" />
 
+
+    <TextView
+        android:id="@+id/txtFollowedName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Bio"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/imvBioUser" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineBioRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.94" />
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBioLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textILayoutBioTwitch"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="30dp"
         android:hint="Twitch"
-        app:layout_constraintEnd_toStartOf="@+id/txtBioBottom"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
-        app:layout_constraintTop_toBottomOf="@+id/txtTwitchInfo">
+        app:layout_constraintTop_toBottomOf="@+id/txtFollowedName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtBioTwitch"
@@ -165,7 +166,7 @@
         android:id="@+id/textILayoutBioUnsplash"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:hint="Unsplash"
         app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
@@ -182,9 +183,9 @@
         android:id="@+id/textILayoutBioInstagram"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:hint="Instagram"
-        app:layout_constraintEnd_toStartOf="@+id/txtBioBottom"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/textILayoutBioUnsplash">
 
@@ -199,9 +200,9 @@
         android:id="@+id/textILayoutBioTwitter"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:hint="Twitter"
-        app:layout_constraintEnd_toStartOf="@+id/txtBioBottom"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/textILayoutBioInstagram">
 
@@ -224,7 +225,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

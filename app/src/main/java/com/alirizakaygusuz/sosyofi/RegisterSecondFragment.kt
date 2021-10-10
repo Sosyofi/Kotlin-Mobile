@@ -96,10 +96,13 @@ class RegisterSecondFragment : Fragment() {
                     user = User(userName, firstName, lastName, email, password)
 
                     user?.let {
-                        postUserRegister(it)
+                        registerUser(it)
 
 
+                        //kontrol sağlanmalı !!!
                         val intent = Intent(context, UserMainActivity::class.java)
+                        intent.putExtra("user",user)
+                        intent.putExtra("followerUserList", ArrayList<User>())
                         context?.startActivity(intent)
                     }
                 }
@@ -114,7 +117,7 @@ class RegisterSecondFragment : Fragment() {
     }
 
 
-    fun postUserRegister(user: User) {
+    fun registerUser(user: User) {
 
         val request = object : StringRequest(Method.POST, URL, Response.Listener { reply ->
 

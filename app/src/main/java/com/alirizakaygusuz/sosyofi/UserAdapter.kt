@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class UserAdapter (private val mContext: Context, private val followers: ArrayList<Followers>): RecyclerView.Adapter<UserAdapter.CardViewDesignHolder>() {
+class UserAdapter (private val mContext: Context, private val followers: ArrayList<User>): RecyclerView.Adapter<UserAdapter.CardViewDesignHolder>() {
 
     inner class CardViewDesignHolder(view: View): RecyclerView.ViewHolder(view) {
 
@@ -34,8 +34,8 @@ class UserAdapter (private val mContext: Context, private val followers: ArrayLi
         val follower = followers[position]
 
 
-        holder.txtRowUserFollowersNumber.text = follower.follow as String
-        holder.txtRowUsersUserName.text = follower.name
+        holder.txtRowUserFollowersNumber.text = follower.followers_count.toString()
+        holder.txtRowUsersUserName.text = follower.nickname
 
 
 

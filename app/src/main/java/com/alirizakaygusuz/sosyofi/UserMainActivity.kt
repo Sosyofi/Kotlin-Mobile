@@ -3,13 +3,15 @@ package com.alirizakaygusuz.sosyofi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alirizakaygusuz.sosyofi.databinding.ActivityUserMainBinding
 
 class UserMainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserMainBinding
-    private  lateinit var followers:ArrayList<Followers>
+    private  lateinit var followerUserList:ArrayList<User>
+
     private lateinit var adapter: UserAdapter
 
 
@@ -19,26 +21,49 @@ class UserMainActivity : AppCompatActivity() {
         binding = ActivityUserMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        val intent = intent
+        val user: User = intent.getSerializableExtra("user") as User
+        followerUserList = intent.getSerializableExtra("followerUserList") as ArrayList<User>
+
+        for(f in followerUserList){
+            Log.i("Gelen:", f.toString())
+        }
+
+        Log.e("Selam ehe:",user.toString())
+
         binding.recyclerView.setHasFixedSize(true)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this@UserMainActivity)
 
 
 
-        followers = ArrayList()
-        val follower :Followers = Followers("İPHonedo" , "264.372" , true , true , false ,true)
-        val follower1 :Followers = Followers("Toyota" , "172.042" , true , false , true ,false)
-        val follower2 :Followers = Followers("Metin" , "25.078" , true , true , true ,true)
-        val follower3 :Followers = Followers("Sadık" , "21" , true , true , true ,true)
-        val follower4 :Followers = Followers("Barış" , "2333" , true , true , true ,true)
-
-        followers = arrayListOf(follower , follower1 , follower2 , follower3 , follower4)
 
 
 
-        adapter = UserAdapter(this@UserMainActivity ,followers)
+
+
+        adapter = UserAdapter(this@UserMainActivity ,followerUserList)
 
         binding.recyclerView.adapter = adapter
+
+
+
+
+        binding.txtUserFollowed.text = "0"
+        binding.txtUserFollower.text =  "0"
+        binding.txtUserInfo.text =  user.bio
+        binding.txtUserNickname.text =  user.nickname
+
+
+
+        binding.imvUserMain.setOnClickListener {
+            val intent = Intent(this@UserMainActivity, BiographyActivity::class.java)
+            intent.putExtra("userInfo",user)
+            startActivity(intent)
+        }
+
+
 
 
     }
