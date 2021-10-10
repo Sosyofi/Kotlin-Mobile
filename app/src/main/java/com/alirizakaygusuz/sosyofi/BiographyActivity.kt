@@ -19,6 +19,7 @@ class BiographyActivity : AppCompatActivity() {
         val user: User = intent.getSerializableExtra("userInfo") as User
 
 
+        binding.txtBioInfo.setText(user.bio , TextView.BufferType.EDITABLE)
         binding.txtBioTwitch.setText(user.twitch , TextView.BufferType.EDITABLE)
         binding.txtBioInstagram.setText(user.instagram , TextView.BufferType.EDITABLE)
         binding.txtBioTwitter.setText(user.twitter , TextView.BufferType.EDITABLE)

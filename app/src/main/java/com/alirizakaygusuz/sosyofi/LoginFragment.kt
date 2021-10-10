@@ -141,30 +141,38 @@ class LoginFragment() : Fragment() {
                     user.followed_count = userJson.getInt("followed_count")
                    //val followers:List<User> = userJson.getJSONArray("followers")
 
-                    val followerUserJsonObject= userJson.getJSONObject("followers")
+                    val control = userJson.getString("followers")
 
-                    val followerUserJsonArray= followerUserJsonObject.getJSONArray("follower_user")
+                    Log.i("Deneme0", control)
+                    
+                    if(!control.equals("null")){
+                        val followerUserJsonObject= userJson.getJSONObject("followers")
+
+                        val followerUserJsonArray= followerUserJsonObject.getJSONArray("follower_user")
 
 
-                    for (i in 0 until followerUserJsonArray.length()) {
-                        val followerUserJson = followerUserJsonArray.getJSONObject(i)
+                        for (i in 0 until followerUserJsonArray.length()) {
+                            val followerUserJson = followerUserJsonArray.getJSONObject(i)
 
-                        followerUser.first_name = followerUserJson.getString("first_name")
-                        followerUser.last_name = followerUserJson.getString("last_name")
-                        followerUser.email = followerUserJson.getString("email")
-                        followerUser.nickname = followerUserJson.getString("nickname")
-                        followerUser.instagram = followerUserJson.getString("instagram")
-                        followerUser.twitch = followerUserJson.getString("twitch")
-                        followerUser.twitter = followerUserJson.getString("twitter")
-                        followerUser.unsplash =  followerUserJson.getString("unsplash")
-                        followerUser.bio = followerUserJson.getString("bio")
+                            followerUser.first_name = followerUserJson.getString("first_name")
+                            followerUser.last_name = followerUserJson.getString("last_name")
+                            followerUser.email = followerUserJson.getString("email")
+                            followerUser.nickname = followerUserJson.getString("nickname")
+                            followerUser.instagram = followerUserJson.getString("instagram")
+                            followerUser.twitch = followerUserJson.getString("twitch")
+                            followerUser.twitter = followerUserJson.getString("twitter")
+                            followerUser.unsplash =  followerUserJson.getString("unsplash")
+                            followerUser.bio = followerUserJson.getString("bio")
 
-                        followerUser.followers_count = followerUserJsonObject.getInt("followers_count")
+                            followerUser.followers_count = followerUserJsonObject.getInt("followers_count")
 
-                        //Log.i("Follower",userJson.getJSONObject("followers").toString())
+                            //Log.i("Follower",userJson.getJSONObject("followers").toString())
 
-                        followerUserList.add(followerUser)
+                            followerUserList.add(followerUser)
+                        }
+
                     }
+
 
 
 
