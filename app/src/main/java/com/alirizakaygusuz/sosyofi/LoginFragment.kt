@@ -141,8 +141,9 @@ class LoginFragment() : Fragment() {
                     user.followed_count = userJson.getInt("followed_count")
                    //val followers:List<User> = userJson.getJSONArray("followers")
 
+                    val followerUserJsonObject= userJson.getJSONObject("followers")
 
-                    val followerUserJsonArray= userJson.getJSONArray("followers")
+                    val followerUserJsonArray= followerUserJsonObject.getJSONArray("follower_user")
 
 
                     for (i in 0 until followerUserJsonArray.length()) {
@@ -158,11 +159,14 @@ class LoginFragment() : Fragment() {
                         followerUser.unsplash =  followerUserJson.getString("unsplash")
                         followerUser.bio = followerUserJson.getString("bio")
 
+                        followerUser.followers_count = followerUserJsonObject.getInt("followers_count")
 
                         //Log.i("Follower",userJson.getJSONObject("followers").toString())
 
                         followerUserList.add(followerUser)
                     }
+
+
 
                     //followerList.add(follower)
 

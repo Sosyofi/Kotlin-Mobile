@@ -50,8 +50,8 @@ class UserMainActivity : AppCompatActivity() {
 
 
 
-        binding.txtUserFollowed.text = "0"
-        binding.txtUserFollower.text =  "0"
+        binding.txtUserFollowed.text = user.followed_count.toString()
+        binding.txtUserFollower.text =  user.followers_count.toString()
         binding.txtUserInfo.text =  user.bio
         binding.txtUserNickname.text =  user.nickname
 

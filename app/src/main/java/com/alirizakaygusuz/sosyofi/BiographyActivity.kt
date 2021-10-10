@@ -36,8 +36,11 @@ class BiographyActivity : AppCompatActivity() {
             greetNickname += "\n${element}"
         }
 
+        binding.txtBioFollowed.text = user.followed_count.toString()
+        binding.txtBioFollowers.text = user.followers_count.toString()
         binding.txtBioRight.text = ""
         binding.txtBioRight.text = greetNickname
+
 
 
 

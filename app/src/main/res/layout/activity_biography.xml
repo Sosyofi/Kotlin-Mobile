@@ -101,22 +101,6 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineBioRight"
         app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
 
-    <TextView
-        android:id="@+id/txtTwitchInfo"
-        android:layout_width="251dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="21dp"
-        android:gravity="center"
-        android:text="Frontend Dev Photographer Dig. Creator"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/txtFollowedName"
-        app:layout_constraintTop_toBottomOf="@+id/imvBioUser" />
-
 
     <TextView
         android:id="@+id/txtFollowedName"
@@ -130,6 +114,23 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/imvBioUser" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textILayoutBioInfo"
+        android:layout_width="264dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
+        app:layout_constraintStart_toEndOf="@+id/txtFollowedName"
+        app:layout_constraintTop_toBottomOf="@+id/imvBioUser">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtBioInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_textfield"
+            android:hint="Biyografinizi Kısaca Özetleyiniz" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineBioRight"
@@ -225,6 +226,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
