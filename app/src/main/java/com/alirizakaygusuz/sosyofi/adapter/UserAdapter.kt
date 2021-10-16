@@ -1,6 +1,7 @@
 package com.alirizakaygusuz.sosyofi.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.alirizakaygusuz.sosyofi.R
 import com.alirizakaygusuz.sosyofi.model.User
+import com.alirizakaygusuz.sosyofi.view.SocialActivity
+import com.alirizakaygusuz.sosyofi.view.UserMainActivity
 
-class UserAdapter(private val mContext: Context, private val followers: List<User>) :
+class UserAdapter(private val mContext: Context, private val followers: List<User> , private val user_id: Int) :
     RecyclerView.Adapter<UserAdapter.CardViewDesignHolder>() {
 
 
@@ -97,6 +100,14 @@ class UserAdapter(private val mContext: Context, private val followers: List<Use
 
         holder.btnRowUsersTwitch.setOnClickListener {
             click_btnRowUsersTwitch(it, chosenFollower)
+        }
+
+        holder.cardVvUsersRow.setOnClickListener {
+
+            val intent = Intent(mContext, SocialActivity::class.java)
+            intent.putExtra("follewedUserId", chosenFollower.user_id)
+            intent.putExtra("user_id", user_id)
+            mContext?.startActivity(intent)
         }
 
 

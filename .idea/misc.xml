@@ -37,7 +37,7 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/font/font.xml" value="0.396875" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_biography.xml" value="0.25" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_social.xml" value="0.22" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_social.xml" value="1.1" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_user.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_user_main.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/fragment_login.xml" value="0.22" />
@@ -55,12 +55,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.33" />
-      </ProjectState>
-    </option>
   </component>
 </project>

@@ -36,6 +36,21 @@ interface SosyofiAPI {
     ):Call<SosyofiAPIMainReply>
 
 
+    @POST("includes/mobile_follow.php")
+    @FormUrlEncoded
+    fun userFollow(
+        @Field("id") user_id: Int,
+        @Field("follower_id") followed_id: Int,
+    ):Call<SosyofiAPICRUDReply>
+
+    @POST("includes/mobile_unfollow.php")
+    @FormUrlEncoded
+    fun userUnfollow(
+        @Field("id") user_id: Int,
+        @Field("follower_id") followed_id: Int,
+    ):Call<SosyofiAPICRUDReply>
+
+
 
 
     @POST("includes/mobile_profile.php")

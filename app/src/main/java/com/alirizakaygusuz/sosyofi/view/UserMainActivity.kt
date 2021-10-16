@@ -39,6 +39,8 @@ class UserMainActivity : AppCompatActivity() {
 
 
 
+
+
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(this@UserMainActivity)
 
@@ -79,9 +81,9 @@ class UserMainActivity : AppCompatActivity() {
 
                     responseBody?.followedUserList?.let {
                         followerUserList = responseBody?.followedUserList
-                        Log.i("Sa", "as")
 
-                        adapter = UserAdapter(this@UserMainActivity, followerUserList)
+
+                        adapter = UserAdapter(this@UserMainActivity, followerUserList , user_id)
                         Log.i("Liste:", followerUserList.toString())
                         binding.recyclerView.adapter = adapter
                     }
