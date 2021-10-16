@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
-    tools:context=".LoginFragment"
+    tools:context=".view.LoginFragment"
     tools:menu="@menu/main_toolbar_menu">
 
 
@@ -48,6 +48,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="140dp"
         android:hint="Email"
+        android:maxLength="50"
         android:visibility="visible"
         app:counterMaxLength="50"
         app:endIconMode="clear_text"
@@ -74,8 +75,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="55dp"
         android:hint="Parola"
+        android:maxLength="50"
         android:visibility="visible"
-        app:counterMaxLength="30"
+        app:counterMaxLength="50"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

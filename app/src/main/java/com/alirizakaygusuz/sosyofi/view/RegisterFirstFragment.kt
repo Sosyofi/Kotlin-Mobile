@@ -1,4 +1,4 @@
-package com.alirizakaygusuz.sosyofi
+package com.alirizakaygusuz.sosyofi.view
 
 
 import android.os.Bundle
@@ -9,18 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.alirizakaygusuz.sosyofi.databinding.FragmentRegisterFirstBinding
-import android.text.style.UnderlineSpan
 
-import android.text.SpannableString
-
-import android.R
-import android.text.TextUtils
-import android.util.Patterns
-
-import android.widget.TextView
-
-
-
+import com.alirizakaygusuz.sosyofi.isValidEmail
 
 
 class RegisterFirstFragment : Fragment() {
@@ -45,9 +35,6 @@ class RegisterFirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
 
         binding.btnRFirstOK.setOnClickListener { view ->
             click_btnRFirstOK(view)
@@ -76,7 +63,7 @@ class RegisterFirstFragment : Fragment() {
 
             if(email.isValidEmail()){
                 val action =
-                    RegisterFirstFragmentDirections.actionRegisterFirstFragmentToRegisterSecondFragment(
+                    com.alirizakaygusuz.sosyofi.view.RegisterFirstFragmentDirections.actionRegisterFirstFragmentToRegisterSecondFragment(
                         email,
                         password)
                 Navigation.findNavController(view).navigate(action)
@@ -85,18 +72,14 @@ class RegisterFirstFragment : Fragment() {
                     .show()
             }
 
-
-
-
         }
 
 
     }
 
     fun click_txtRFirstLogin(view: View) {
-
-
-        val action = RegisterFirstFragmentDirections.actionRegisterFirstFragmentToLoginFragment()
+        val action =
+            com.alirizakaygusuz.sosyofi.view.RegisterFirstFragmentDirections.actionRegisterFirstFragmentToLoginFragment()
         Navigation.findNavController(view).navigate(action)
     }
 

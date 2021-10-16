@@ -1,0 +1,60 @@
+package com.alirizakaygusuz.sosyofi.service
+
+
+import retrofit2.Call
+import retrofit2.http.*
+
+
+interface SosyofiAPI {
+
+    //metodlarım
+    //ekle-güncelle-sil- verileri çek vs vs
+    @POST("includes/mobile_signup.inc.php")
+    @FormUrlEncoded//türkçe karakter desteği
+    fun userRegister(
+        @Field("nickname") nickname: String ,
+        @Field("first_name") first_name: String ,
+        @Field("last_name") last_name: String,
+        @Field("email") email: String ,
+        @Field("password") hashed_password: String
+
+    ): Call<SosyofiAPIReply>
+
+
+
+    @POST("includes/mobile_login.inc.php")
+    @FormUrlEncoded
+    fun userLogin(
+        @Field("email") email: String ,
+        @Field("password") hashed_password: String
+    ):Call<SosyofiAPIReply>
+
+
+    @GET("includes/mobile_main.php")
+    fun fetchUserAllInfo(
+        @Query("id") user_id: Int
+    ):Call<SosyofiAPIMainReply>
+
+
+
+
+    @POST("includes/mobile_profile.php")
+    @FormUrlEncoded
+    fun userUpdate(
+        //@Field("picture") picture: Blob ,
+        @Field("id") id: Int ,
+        @Field("bio") bio: String ,
+        @Field("instagram") instagram: String ,
+        @Field("twitch") twitch: String ,
+        @Field("twitter") twitter: String ,
+        @Field("unsplash") unsplash: String
+    ): Call<SosyofiAPICRUDReply>
+
+
+
+
+    @POST("includes/mobile_profileDelete.php")
+    @FormUrlEncoded
+    fun userDelete(@Field("id") id: Int): Call<SosyofiAPICRUDReply>
+
+}

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/secondregister_background"
-    tools:context=".RegisterSecondFragment">
+    tools:context=".view.RegisterSecondFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
@@ -77,9 +77,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
         android:hint="İsim"
+        android:maxLength="50"
         android:visibility="visible"
         app:counterMaxLength="50"
-        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,8 @@
             android:backgroundTint="#33000000"
             android:inputType="textFilter"
             android:maxLength="50"
-            android:visibility="visible" />
+            android:visibility="visible"
+            app:counterMaxLength="50" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -102,7 +103,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:hint="Kullanıcı Adı"
+        android:maxLength="50"
         android:visibility="visible"
+        app:counterMaxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,8 +126,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:hint="Soyisim"
+        android:maxLength="50"
         android:visibility="visible"
-        app:counterMaxLength="30"
+        app:counterMaxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

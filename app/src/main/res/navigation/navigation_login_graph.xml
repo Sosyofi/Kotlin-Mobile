@@ -6,7 +6,7 @@
     app:startDestination="@id/registerFirstFragment">
     <fragment
         android:id="@+id/registerFirstFragment"
-        android:name="com.alirizakaygusuz.sosyofi.RegisterFirstFragment"
+        android:name="com.alirizakaygusuz.sosyofi.view.RegisterFirstFragment"
         android:label="fragment_register_first"
         tools:layout="@layout/fragment_register_first">
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerSecondFragment"
-        android:name="com.alirizakaygusuz.sosyofi.RegisterSecondFragment"
+        android:name="com.alirizakaygusuz.sosyofi.view.RegisterSecondFragment"
         android:label="fragment_register_second"
         tools:layout="@layout/fragment_register_second" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.alirizakaygusuz.sosyofi.LoginFragment"
+        android:name="com.alirizakaygusuz.sosyofi.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action

@@ -1,4 +1,4 @@
-package com.alirizakaygusuz.sosyofi
+package com.alirizakaygusuz.sosyofi.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -18,12 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
-
-
-
 
     }
 

@@ -13,16 +13,16 @@
         android:theme="@style/Theme.Sosyofi"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SocialActivity"
+            android:name=".view.SocialActivity"
             android:exported="true" />
         <activity
-            android:name=".BiographyActivity"
+            android:name=".view.BiographyActivity"
             android:exported="true" />
         <activity
-            android:name=".UserMainActivity"
+            android:name=".view.UserMainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

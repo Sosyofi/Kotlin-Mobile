@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/usermain_background"
-    tools:context=".UserMainActivity">
+    tools:context=".view.UserMainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -24,8 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="12dp"
-        android:text="Frontend Dev\nPhotographer\nDig. Creator"
+        android:layout_marginEnd="18dp"
+        android:text="Android Dev\nBackend Dev\nFrontend Dev"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -36,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="97dp"
         android:layout_marginTop="24dp"
-        android:text="237 "
+        android:text="453"
         android:textColor="#0A9F8E"
         android:textStyle="bold"
         android:visibility="visible"
@@ -60,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="108dp"
         android:layout_marginTop="8dp"
-        android:text="28"
+        android:text="20"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:visibility="visible"
@@ -86,9 +88,11 @@
         android:layout_marginTop="24dp"
         android:background="#000000"
         android:backgroundTint="@color/black"
+        android:onClick="click_imvUserMain"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/txtUserNickname"
@@ -96,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="100dp"
-        android:text="BBestamiS"
+        android:text="Sosyofi"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -115,8 +119,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="406dp"
-        android:layout_height="32dp"
+        android:layout_width="404dp"
+        android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/custom_button"
         android:backgroundTint="#4D767676"

@@ -1,4 +1,4 @@
-package com.alirizakaygusuz.sosyofi
+package com.alirizakaygusuz.sosyofi.model
 
 import java.io.Serializable
 

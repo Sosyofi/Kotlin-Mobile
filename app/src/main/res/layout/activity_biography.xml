@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/userbio_background"
-    tools:context=".BiographyActivity">
+    tools:context=".view.BiographyActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -30,6 +30,22 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
         app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch"
         app:srcCompat="@drawable/custom_userimage" />
+
+    <Button
+        android:id="@+id/btnBioDeleteUser"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FA0000"
+        android:onClick="click_btnBiodeleteUser"
+        android:text="Hesabımı Sil"
+        android:textColor="#FFFEFE"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/imvBioUser"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/imvBioUser"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/txtBioFollowers"
@@ -102,28 +118,15 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
 
 
-    <TextView
-        android:id="@+id/txtFollowedName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="Bio"
-        android:textColor="#FFFFFF"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
-        app:layout_constraintTop_toBottomOf="@+id/imvBioUser" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textILayoutBioInfo"
-        android:layout_width="264dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
-        app:layout_constraintStart_toEndOf="@+id/txtFollowedName"
-        app:layout_constraintTop_toBottomOf="@+id/imvBioUser">
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/btnBioDeleteUser">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtBioInfo"
@@ -151,12 +154,12 @@
         android:id="@+id/textILayoutBioTwitch"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:hint="Twitch"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
-        app:layout_constraintTop_toBottomOf="@+id/txtFollowedName">
+        app:layout_constraintTop_toBottomOf="@+id/textILayoutBioInfo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtBioTwitch"
@@ -169,7 +172,7 @@
         android:id="@+id/textILayoutBioUnsplash"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:hint="Unsplash"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
@@ -187,7 +190,7 @@
         android:id="@+id/textILayoutBioInstagram"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:hint="Instagram"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
@@ -205,7 +208,7 @@
         android:id="@+id/textILayoutBioTwitter"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:hint="Twitter"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@+id/txtBioRight"
@@ -220,12 +223,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnBioOnayla"
+        android:id="@+id/btnBioUpdateUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:background="@drawable/custom_button"
-        android:text="Onayla"
+        android:onClick="click_btnBioUpdateUser"
+        android:text="Güncelle"
         android:textColor="#101010"
         app:backgroundTint="#83ED80"
         app:layout_constraintBottom_toBottomOf="parent"
