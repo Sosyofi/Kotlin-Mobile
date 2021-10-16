@@ -37,24 +37,26 @@ class UserMainActivity : AppCompatActivity() {
         val intent = intent
         var user_id = intent.getIntExtra("userId", 0)
 
-        binding.recyclerView.setHasFixedSize(true)
 
+
+        binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(this@UserMainActivity)
 
         getUser(user_id)
 
     }
 
-    fun click_imvUserMain(view: View){
+    fun click_imvUserMain(view: View) {
         val intent = Intent(this@UserMainActivity, BiographyActivity::class.java)
+        Log.i("User:", user.toString())
         intent.putExtra("userInfo", user)
         startActivity(intent)
     }
 
 
-    fun getUser(user_id : Int){
+    fun getUser(user_id: Int) {
 
-        sosyofiAPI.fetchUserAllInfo(user_id).enqueue(object : Callback<SosyofiAPIMainReply>{
+        sosyofiAPI.fetchUserAllInfo(user_id).enqueue(object : Callback<SosyofiAPIMainReply> {
             override fun onResponse(
                 call: Call<SosyofiAPIMainReply>?,
                 response: Response<SosyofiAPIMainReply>?,
@@ -63,30 +65,33 @@ class UserMainActivity : AppCompatActivity() {
 
                     val responseBody = response.body()
 
-                    if(responseBody?.followedUserList != null){
+                    responseBody?.user?.let {
 
-                        user = responseBody?.user
-                        user?.let {
-                            user = it
-                            binding.txtUserNickname.text = user.nickname
-                            binding.txtUserInfo.text = user.bio
-                            binding.txtUserFollower.text = user.followers_count.toString()
-                            binding.txtUserFollowed.text = user.followed_count.toString()
+                        user = it
+                        binding.txtUserNickname.text = user.nickname
 
-                        }
+                        binding.txtUserInfo.text = user.bio
+                        binding.txtUserFollower.text = user.followers_count.toString()
+                        binding.txtUserFollowed.text = user.followed_count.toString()
 
-                        followerUserList = responseBody?.followedUserList
-
-                        adapter = UserAdapter(this@UserMainActivity, followerUserList)
-                        binding.recyclerView.adapter = adapter
 
                     }
+
+                    responseBody?.followedUserList?.let {
+                        followerUserList = responseBody?.followedUserList
+                        Log.i("Sa", "as")
+
+                        adapter = UserAdapter(this@UserMainActivity, followerUserList)
+                        Log.i("Liste:", followerUserList.toString())
+                        binding.recyclerView.adapter = adapter
+                    }
+
 
                 }
             }
 
             override fun onFailure(call: Call<SosyofiAPIMainReply>?, t: Throwable?) {
-               Log.i("UserMainActivty Failled:", t?.message.toString())
+                Log.i("UserMainActivty Failled:", t?.message.toString())
             }
 
         })
