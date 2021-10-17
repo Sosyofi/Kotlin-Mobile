@@ -8,7 +8,7 @@ data class SosyofiAPIMainReply(
     @SerializedName("user")
     @Expose
     var user: User,
-    @SerializedName("followed")
+    @SerializedName("users")
     @Expose
     var followedUserList: List<User>,
     @SerializedName("success")

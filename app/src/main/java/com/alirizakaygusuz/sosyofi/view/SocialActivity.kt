@@ -1,15 +1,10 @@
 package com.alirizakaygusuz.sosyofi.view
 
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.alirizakaygusuz.sosyofi.R
-import com.alirizakaygusuz.sosyofi.adapter.UserAdapter
 import com.alirizakaygusuz.sosyofi.databinding.ActivitySocialBinding
-import com.alirizakaygusuz.sosyofi.service.SosyofiAPICRUDReply
 import com.alirizakaygusuz.sosyofi.service.SosyofiAPIMainReply
 import com.alirizakaygusuz.sosyofi.service.SosyofiAPIReply
 import com.alirizakaygusuz.sosyofi.util.SosyofiAPIUtils
@@ -84,10 +79,10 @@ class SocialActivity : AppCompatActivity() {
 
 
     fun follow(user_id: Int , followed_id: Int){
-        sosyofiAPI.userFollow(user_id , followed_id).enqueue(object : Callback<SosyofiAPICRUDReply> {
+        sosyofiAPI.userFollow(user_id , followed_id).enqueue(object : Callback<SosyofiAPIReply> {
             override fun onResponse(
-                call: Call<SosyofiAPICRUDReply>?,
-                response: Response<SosyofiAPICRUDReply>?,
+                call: Call<SosyofiAPIReply>?,
+                response: Response<SosyofiAPIReply>?,
             ) {
                 if(response != null){
                     if(response.body()?.success == 1){
@@ -98,7 +93,7 @@ class SocialActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<SosyofiAPICRUDReply>?, t: Throwable?) {
+            override fun onFailure(call: Call<SosyofiAPIReply>?, t: Throwable?) {
                 Log.i("SocialActivity Follow Error:", t?.message.toString())
             }
 
@@ -107,10 +102,10 @@ class SocialActivity : AppCompatActivity() {
 
 
     fun unfollow(user_id: Int , followed_id: Int){
-        sosyofiAPI.userUnfollow(user_id , followed_id).enqueue(object : Callback<SosyofiAPICRUDReply> {
+        sosyofiAPI.userUnfollow(user_id , followed_id).enqueue(object : Callback<SosyofiAPIReply> {
             override fun onResponse(
-                call: Call<SosyofiAPICRUDReply>?,
-                response: Response<SosyofiAPICRUDReply>?,
+                call: Call<SosyofiAPIReply>?,
+                response: Response<SosyofiAPIReply>?,
             ) {
                 if(response != null){
                     Log.i("Message", response.body()?.message.toString())
@@ -122,7 +117,7 @@ class SocialActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<SosyofiAPICRUDReply>?, t: Throwable?) {
+            override fun onFailure(call: Call<SosyofiAPIReply>?, t: Throwable?) {
                 Log.i("SocialActivity Unfollow Error:", t?.message.toString())
             }
 

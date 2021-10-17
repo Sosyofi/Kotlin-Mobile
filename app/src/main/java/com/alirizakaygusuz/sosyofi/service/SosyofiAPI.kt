@@ -41,14 +41,14 @@ interface SosyofiAPI {
     fun userFollow(
         @Field("id") user_id: Int,
         @Field("follower_id") followed_id: Int,
-    ):Call<SosyofiAPICRUDReply>
+    ):Call<SosyofiAPIReply>
 
     @POST("includes/mobile_unfollow.php")
     @FormUrlEncoded
     fun userUnfollow(
         @Field("id") user_id: Int,
         @Field("follower_id") followed_id: Int,
-    ):Call<SosyofiAPICRUDReply>
+    ):Call<SosyofiAPIReply>
 
 
 
@@ -63,13 +63,19 @@ interface SosyofiAPI {
         @Field("twitch") twitch: String ,
         @Field("twitter") twitter: String ,
         @Field("unsplash") unsplash: String
-    ): Call<SosyofiAPICRUDReply>
+    ): Call<SosyofiAPIReply>
 
+
+
+    @GET("includes/mobile_searchUser.php")
+    fun searchUser(
+        @Query("nickname") nickname: String
+    ):Call<SosyofiAPIMainReply>
 
 
 
     @POST("includes/mobile_profileDelete.php")
     @FormUrlEncoded
-    fun userDelete(@Field("id") id: Int): Call<SosyofiAPICRUDReply>
+    fun userDelete(@Field("id") id: Int): Call<SosyofiAPIReply>
 
 }

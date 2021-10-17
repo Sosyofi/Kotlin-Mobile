@@ -4,7 +4,7 @@
 
     <solid android:color="@color/custom_row_pink" />
     <size
-        android:width="100dp"
-        android:height="100dp" />
+        android:width="60dp"
+        android:height="60dp" />
 
 </shape>

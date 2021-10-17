@@ -9,12 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import com.alirizakaygusuz.sosyofi.databinding.ActivityBiographyBinding
 import com.alirizakaygusuz.sosyofi.model.User
-import com.alirizakaygusuz.sosyofi.service.SosyofiAPICRUDReply
 import com.alirizakaygusuz.sosyofi.service.SosyofiAPIReply
 import com.alirizakaygusuz.sosyofi.util.SosyofiAPIUtils
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import retrofit2.Call
 import retrofit2.Callback
 
@@ -67,10 +63,10 @@ class BiographyActivity : AppCompatActivity() {
 
     fun updateUserBio(user: User) {
 
-        sosyofiAPI.userUpdate(user.user_id,user.bio!! , user.instagram!! , user.twitch!! , user.twitter!! , user.unsplash!!).enqueue(object: Callback<SosyofiAPICRUDReply>{
+        sosyofiAPI.userUpdate(user.user_id,user.bio!! , user.instagram!! , user.twitch!! , user.twitter!! , user.unsplash!!).enqueue(object: Callback<SosyofiAPIReply>{
             override fun onResponse(
-                call: Call<SosyofiAPICRUDReply>?,
-                response: retrofit2.Response<SosyofiAPICRUDReply>?,
+                call: Call<SosyofiAPIReply>?,
+                response: retrofit2.Response<SosyofiAPIReply>?,
             ) {
                 if(response != null){
                     val responseBody = response.body()
@@ -88,7 +84,7 @@ class BiographyActivity : AppCompatActivity() {
 
             }
 
-            override fun onFailure(call: Call<SosyofiAPICRUDReply>?, t: Throwable?) {
+            override fun onFailure(call: Call<SosyofiAPIReply>?, t: Throwable?) {
                Log.e("BiographyActivty Update Error:", t?.message.toString())
             }
 
@@ -114,10 +110,10 @@ class BiographyActivity : AppCompatActivity() {
     fun click_btnBiodeleteUser(view: View) {
         Log.i("Silinecek id:", user.user_id.toString())
 
-        sosyofiAPI.userDelete(user.user_id).enqueue(object : Callback<SosyofiAPICRUDReply>{
+        sosyofiAPI.userDelete(user.user_id).enqueue(object : Callback<SosyofiAPIReply>{
             override fun onResponse(
-                call: Call<SosyofiAPICRUDReply>?,
-                response: retrofit2.Response<SosyofiAPICRUDReply>?,
+                call: Call<SosyofiAPIReply>?,
+                response: retrofit2.Response<SosyofiAPIReply>?,
             ) {
                 if(response != null){
                     if(response.body()?.success == 1){
@@ -132,7 +128,7 @@ class BiographyActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<SosyofiAPICRUDReply>?, t: Throwable?) {
+            override fun onFailure(call: Call<SosyofiAPIReply>?, t: Throwable?) {
                 Log.e("BiographyActivty Delete Error:", t?.message.toString())
             }
 
