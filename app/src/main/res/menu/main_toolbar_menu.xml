@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/sosyofi_web"
-        android:icon="@drawable/sosyofi"
-        android:title="Sosyofi"
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always"></item>
 </menu>

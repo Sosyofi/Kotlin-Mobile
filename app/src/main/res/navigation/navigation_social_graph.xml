@@ -8,5 +8,60 @@
         android:id="@+id/twitchFragment"
         android:name="com.alirizakaygusuz.sosyofi.view.TwitchFragment"
         android:label="fragment_twitch"
-        tools:layout="@layout/fragment_twitch" />
+        tools:layout="@layout/fragment_twitch" >
+        <action
+            android:id="@+id/action_twitchFragment_to_instagramFragment"
+            app:destination="@id/instagramFragment" />
+        <action
+            android:id="@+id/action_twitchFragment_to_twitterFragment"
+            app:destination="@id/twitterFragment" />
+        <action
+            android:id="@+id/action_twitchFragment_to_unsplashFragment"
+            app:destination="@id/unsplashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/instagramFragment"
+        android:name="com.alirizakaygusuz.sosyofi.view.InstagramFragment"
+        android:label="fragment_instagram"
+        tools:layout="@layout/fragment_instagram" >
+        <action
+            android:id="@+id/action_instagramFragment_to_twitterFragment"
+            app:destination="@id/twitterFragment" />
+        <action
+            android:id="@+id/action_instagramFragment_to_unsplashFragment"
+            app:destination="@id/unsplashFragment" />
+        <action
+            android:id="@+id/action_instagramFragment_to_twitchFragment"
+            app:destination="@id/twitchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/twitterFragment"
+        android:name="com.alirizakaygusuz.sosyofi.view.TwitterFragment"
+        android:label="fragment_twitter"
+        tools:layout="@layout/fragment_twitter" >
+        <action
+            android:id="@+id/action_twitterFragment_to_unsplashFragment"
+            app:destination="@id/unsplashFragment" />
+        <action
+            android:id="@+id/action_twitterFragment_to_instagramFragment"
+            app:destination="@id/instagramFragment" />
+        <action
+            android:id="@+id/action_twitterFragment_to_twitchFragment"
+            app:destination="@id/twitchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/unsplashFragment"
+        android:name="com.alirizakaygusuz.sosyofi.view.UnsplashFragment"
+        android:label="fragment_unsplash"
+        tools:layout="@layout/fragment_unsplash" >
+        <action
+            android:id="@+id/action_unsplashFragment_to_twitterFragment"
+            app:destination="@id/twitterFragment" />
+        <action
+            android:id="@+id/action_unsplashFragment_to_instagramFragment"
+            app:destination="@id/instagramFragment" />
+        <action
+            android:id="@+id/action_unsplashFragment_to_twitchFragment"
+            app:destination="@id/twitchFragment" />
+    </fragment>
 </navigation>

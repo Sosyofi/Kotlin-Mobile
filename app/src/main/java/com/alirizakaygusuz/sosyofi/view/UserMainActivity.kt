@@ -3,9 +3,14 @@ package com.alirizakaygusuz.sosyofi.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alirizakaygusuz.sosyofi.R
 import com.alirizakaygusuz.sosyofi.adapter.UserAdapter
 import com.alirizakaygusuz.sosyofi.databinding.ActivityUserMainBinding
 import com.alirizakaygusuz.sosyofi.model.User
@@ -83,7 +88,7 @@ class UserMainActivity : AppCompatActivity() {
                         followerUserList = responseBody?.followedUserList
 
 
-                        adapter = UserAdapter(this@UserMainActivity, followerUserList , user_id)
+                        adapter = UserAdapter(this@UserMainActivity, followerUserList, user_id)
                         Log.i("Liste:", followerUserList.toString())
                         binding.recyclerView.adapter = adapter
                     }
@@ -97,5 +102,44 @@ class UserMainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+
+        menuInflater.inflate(R.menu.main_toolbar_menu , menu)
+
+
+
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(item.itemId == R.id.action_search){
+
+            Log.i("Sa-------------------------", "-----------------as")
+            val searchView: SearchView = item.actionView as SearchView
+
+            searchView.queryHint = "Kimi Bulmak İstiyorsun ? "
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+
+                }
+
+            })
+
+        }
+
+
+        return super.onOptionsItemSelected(item)
     }
 }

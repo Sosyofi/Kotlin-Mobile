@@ -7,31 +7,18 @@
     android:background="@drawable/secondregister_background"
     tools:context=".view.RegisterSecondFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
+        android:layout_marginBottom="16dp"
         android:text="merhaba."
         android:textColor="#FFFFFF"
         android:textSize="30dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTop"
@@ -39,7 +26,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintGuide_percent="0.168" />
+        app:layout_constraintGuide_percent="0.13" />
 
     <TextView
         android:id="@+id/textView6"

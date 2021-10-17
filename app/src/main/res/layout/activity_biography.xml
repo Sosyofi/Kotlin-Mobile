@@ -8,88 +8,22 @@
     tools:context=".view.BiographyActivity">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarTwitch"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <ImageView
         android:id="@+id/imvBioUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/custom_userimage" />
-
-    <Button
-        android:id="@+id/btnBioDeleteUser"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FA0000"
-        android:onClick="click_btnBiodeleteUser"
-        android:text="Hesabımı Sil"
-        android:textColor="#FFFEFE"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/imvBioUser"
-        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
-        app:layout_constraintTop_toBottomOf="@+id/imvBioUser"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/txtBioFollowers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="35dp"
-        android:text="237"
-        android:textColor="#0A9F8E"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imvBioUser"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="35dp"
-        android:text="takipçi"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/txtBioFollowers"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="15dp"
-        android:text="takip"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/txtBioFollowed"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
         android:id="@+id/txtBioFollowed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
         android:text="28"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -98,10 +32,64 @@
         app:layout_constraintTop_toBottomOf="@+id/txtBioFollowers" />
 
     <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:text="takipçi"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/txtBioFollowers"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="takip"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/txtBioFollowed"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <Button
+        android:id="@+id/btnBioDeleteUser"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#FA0000"
+        android:onClick="click_btnBiodeleteUser"
+        android:text="Hesabımı Sil"
+        android:textColor="#FFFEFE"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/imvBioUser"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBioLeft"
+        app:layout_constraintTop_toBottomOf="@+id/imvBioUser"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/txtBioFollowers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
+        android:text="237"
+        android:textColor="#0A9F8E"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imvBioUser"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/txtBioRight"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="72dp"
         android:layout_marginBottom="24dp"
         android:rotation="0"
         android:rotationX="0"
@@ -115,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guidelineBioRight"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarTwitch" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -226,7 +214,7 @@
         android:id="@+id/btnBioUpdateUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/custom_button"
         android:onClick="click_btnBioUpdateUser"
         android:text="Güncelle"
@@ -234,6 +222,7 @@
         app:backgroundTint="#83ED80"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineBioRight"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent" />
 
 
