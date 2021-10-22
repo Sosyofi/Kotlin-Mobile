@@ -1,41 +1,67 @@
 package com.alirizakaygusuz.sosyofi.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import com.alirizakaygusuz.sosyofi.databinding.ActivityBiographyBinding
+import com.alirizakaygusuz.sosyofi.R
+import com.alirizakaygusuz.sosyofi.databinding.FragmentBiographyBinding
+import com.alirizakaygusuz.sosyofi.databinding.FragmentUserMainBinding
 import com.alirizakaygusuz.sosyofi.model.User
 import com.alirizakaygusuz.sosyofi.service.SosyofiAPIReply
 import com.alirizakaygusuz.sosyofi.util.SosyofiAPIUtils
 import retrofit2.Call
 import retrofit2.Callback
 
-class BiographyActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBiographyBinding
+class BiographyFragment : Fragment() {
+
+    private lateinit var binding: FragmentBiographyBinding
     private var sosyofiAPI = SosyofiAPIUtils.getSosyofiAPI()
 
     private lateinit var user: User
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBiographyBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        binding = FragmentBiographyBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
-        val intent = intent
-        user = intent.getSerializableExtra("userInfo") as User
+        arguments?.let {
+            user = BiographyFragmentArgs.fromBundle(
+                it
+            ).user
+        }
+
+
 
 
         initBiographyFields()
 
-    }
+        binding.btnBioDeleteUser.setOnClickListener {
+            click_btnBiodeleteUser(it)
+        }
 
+        binding.btnBioUpdateUser.setOnClickListener {
+            click_btnBioUpdateUser(it)
+        }
+    }
 
     fun initBiographyFields(){
         binding.txtBioInfo.setText(user.bio, TextView.BufferType.EDITABLE)
@@ -63,7 +89,8 @@ class BiographyActivity : AppCompatActivity() {
 
     fun updateUserBio(user: User) {
 
-        sosyofiAPI.userUpdate(user.user_id,user.bio!! , user.instagram!! , user.twitch!! , user.twitter!! , user.unsplash!!).enqueue(object: Callback<SosyofiAPIReply>{
+        sosyofiAPI.userUpdate(user.user_id,user.bio!! , user.instagram!! , user.twitch!! , user.twitter!! , user.unsplash!!).enqueue(object:
+            Callback<SosyofiAPIReply> {
             override fun onResponse(
                 call: Call<SosyofiAPIReply>?,
                 response: retrofit2.Response<SosyofiAPIReply>?,
@@ -72,20 +99,20 @@ class BiographyActivity : AppCompatActivity() {
                     val responseBody = response.body()
 
                     if(responseBody?.success == 1){
-                        Toast.makeText(applicationContext , "Güncelleme işlemi tamamlanmıştır!!", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@BiographyActivity, UserMainActivity::class.java)
+                        Toast.makeText(context , "Güncelleme işlemi tamamlanmıştır!!", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(context, UserMainActivity::class.java)
                         intent.putExtra("userId", user.user_id)
                         startActivity(intent)
                     }
                     else{
-                        Toast.makeText(this@BiographyActivity, "Biyogrofi güncelleme işlemi başarısız!!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Biyogrofi güncelleme işlemi başarısız!!", Toast.LENGTH_LONG).show()
                     }
                 }
 
             }
 
             override fun onFailure(call: Call<SosyofiAPIReply>?, t: Throwable?) {
-               Log.e("BiographyActivty Update Error:", t?.message.toString())
+                Log.e("BiographyActivty Update Error:", t?.message.toString())
             }
 
         })
@@ -110,19 +137,19 @@ class BiographyActivity : AppCompatActivity() {
     fun click_btnBiodeleteUser(view: View) {
         Log.i("Silinecek id:", user.user_id.toString())
 
-        sosyofiAPI.userDelete(user.user_id).enqueue(object : Callback<SosyofiAPIReply>{
+        sosyofiAPI.userDelete(user.user_id).enqueue(object : Callback<SosyofiAPIReply> {
             override fun onResponse(
                 call: Call<SosyofiAPIReply>?,
                 response: retrofit2.Response<SosyofiAPIReply>?,
             ) {
                 if(response != null){
                     if(response.body()?.success == 1){
-                        Toast.makeText(this@BiographyActivity, "Hesabınızı silinmiştir", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@BiographyActivity, MainActivity::class.java)
+                        Toast.makeText(context, "Hesabınızı silinmiştir", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(context, MainActivity::class.java)
                         startActivity(intent)
                     }
                     else{
-                        Toast.makeText(this@BiographyActivity, "Hesabınızı silme işlemi başarısız!!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Hesabınızı silme işlemi başarısız!!", Toast.LENGTH_LONG).show()
                     }
 
                 }
@@ -136,4 +163,6 @@ class BiographyActivity : AppCompatActivity() {
         })
 
     }
+
+
 }

@@ -16,6 +16,9 @@
         <argument
             android:name="userId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_userMainFragment_to_biographyFragment"
+            app:destination="@id/biographyFragment" />
     </fragment>
     <fragment
         android:id="@+id/usersFragment"
@@ -28,5 +31,17 @@
         <argument
             android:name="userId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/biographyFragment"
+        android:name="com.alirizakaygusuz.sosyofi.view.BiographyFragment"
+        android:label="fragment_biography"
+        tools:layout="@layout/fragment_biography" >
+        <action
+            android:id="@+id/action_biographyFragment_to_userMainFragment"
+            app:destination="@id/userMainFragment" />
+        <argument
+            android:name="user"
+            app:argType="com.alirizakaygusuz.sosyofi.model.User" />
     </fragment>
 </navigation>

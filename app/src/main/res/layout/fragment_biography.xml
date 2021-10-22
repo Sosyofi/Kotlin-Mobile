@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/userbio_background"
-    tools:context=".view.BiographyActivity">
+    tools:context=".view.BiographyFragment">
 
 
     <ImageView
@@ -24,7 +24,6 @@
         android:layout_height="32dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="#FA0000"
-        android:onClick="click_btnBiodeleteUser"
         android:text="Hesabımı Sil"
         android:textColor="#FFFEFE"
         android:textSize="10sp"
@@ -214,7 +213,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@drawable/custom_button"
-        android:onClick="click_btnBioUpdateUser"
         android:text="Güncelle"
         android:textColor="#101010"
         app:backgroundTint="#83ED80"

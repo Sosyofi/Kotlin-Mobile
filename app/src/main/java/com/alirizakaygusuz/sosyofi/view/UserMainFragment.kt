@@ -82,10 +82,9 @@ class UserMainFragment : Fragment() {
 
 
     fun click_imvUserMain(view: View) {
-        val intent = Intent(context, BiographyActivity::class.java)
-        Log.i("User:", user.toString())
-        intent.putExtra("userInfo", user)
-        startActivity(intent)
+        val action =
+            com.alirizakaygusuz.sosyofi.view.UserMainFragmentDirections.actionUserMainFragmentToBiographyFragment(user)
+        view?.let { Navigation.findNavController(it).navigate(action) }
     }
 
 
