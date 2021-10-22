@@ -33,11 +33,12 @@ class SocialActivity : AppCompatActivity() {
         getUser(followed_userId)
 
         binding.btnSocialFollowOrUnfollow.setOnClickListener {
-            if(binding.btnSocialFollowOrUnfollow.text.equals("Takibi Bırak")){
+           /* if(binding.btnSocialFollowOrUnfollow.text.equals("Takibi Bırak")){
                 unfollow(user_id,followed_userId)
             }else{
                 follow(user_id,followed_userId)
-            }
+            }*/
+            follow(user_id,followed_userId)
         }
 
 
@@ -65,15 +66,12 @@ class SocialActivity : AppCompatActivity() {
 
                     }
 
-
-
                 }
             }
 
             override fun onFailure(call: Call<SosyofiAPIMainReply>?, t: Throwable?) {
                 Log.i("SocialActivity Failled:", t?.message.toString())
             }
-
         })
     }
 

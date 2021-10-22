@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alirizakaygusuz.sosyofi.R
 import com.alirizakaygusuz.sosyofi.model.User
 import com.alirizakaygusuz.sosyofi.view.SocialActivity
-import com.alirizakaygusuz.sosyofi.view.UserMainActivity
+
 
 class UserAdapter(private val mContext: Context, private val followers: List<User> , private val user_id: Int) :
     RecyclerView.Adapter<UserAdapter.CardViewDesignHolder>() {
@@ -29,10 +29,7 @@ class UserAdapter(private val mContext: Context, private val followers: List<Use
         var btnRowUsersTwitter: Button
         var btnRowUsersUnsplash: Button
 
-        /*  var btnInstagram: Button
-          var btnTwitch: Button
-          var btnTwitter: Button
-          var btnUnsplash: Button*/
+
 
         init {
             cardVvUsersRow = view.findViewById(R.id.cardVvUsersRow)
@@ -42,11 +39,6 @@ class UserAdapter(private val mContext: Context, private val followers: List<Use
             btnRowUsersInstagram = view.findViewById(R.id.btnRowUsersInstagram)
             btnRowUsersTwitter = view.findViewById(R.id.btnRowUsersTwitter)
             btnRowUsersUnsplash = view.findViewById(R.id.btnRowUsersUnsplash)
-
-            /* btnInstagram = view.findViewById(R.id.btnInstagram)
-             btnTwitch = view.findViewById(R.id.btnTwitch)
-             btnTwitter = view.findViewById(R.id.btnTwitter)
-             btnUnsplash = view.findViewById(R.id.btnUnsplash)*/
 
 
         }
@@ -61,10 +53,7 @@ class UserAdapter(private val mContext: Context, private val followers: List<Use
 
     override fun onBindViewHolder(holder: CardViewDesignHolder, position: Int) {
 
-        /*
-        holder.btnTwitch.setOnClickListener {
 
-        }*/
 
         val chosenFollower: User = followers[position]
 
@@ -104,9 +93,14 @@ class UserAdapter(private val mContext: Context, private val followers: List<Use
 
         holder.cardVvUsersRow.setOnClickListener {
 
-            val intent = Intent(mContext, SocialActivity::class.java)
+            var intent = Intent(mContext, SocialActivity::class.java)
+
+           // if(user_id != -1){
+                intent = Intent(mContext, SocialActivity::class.java)
+                intent.putExtra("user_id", user_id)
+            //}
             intent.putExtra("follewedUserId", chosenFollower.user_id)
-            intent.putExtra("user_id", user_id)
+
             mContext?.startActivity(intent)
         }
 

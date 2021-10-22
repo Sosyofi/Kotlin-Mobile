@@ -28,6 +28,8 @@ class UserMainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserMainBinding
 
+    private var user_id = 0
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +37,12 @@ class UserMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUserMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val intent = intent
+
+        user_id = intent?.getIntExtra("userId", 0)!!
+
+        Log.i("SA", "Hİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİ:$user_id")
     }
 
 
@@ -44,6 +52,8 @@ class UserMainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main_toolbar_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Log.i("Sa-------------------------", "-----------------as")
@@ -61,6 +71,10 @@ class UserMainActivity : AppCompatActivity() {
                     if(!query.isNullOrEmpty()){
                         Log.i("SAA", query)
 
+
+
+                       val userMainFragment = UserMainFragment()
+                        userMainFragment.getSearchedUsers(binding.navigationView , query , user_id ,applicationContext)
                     }
 
                     return false
@@ -79,6 +93,7 @@ class UserMainActivity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
 
 
 }

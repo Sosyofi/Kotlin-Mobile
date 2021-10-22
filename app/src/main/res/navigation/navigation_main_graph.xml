@@ -13,10 +13,20 @@
         <action
             android:id="@+id/action_userMainFragment_to_usersFragment"
             app:destination="@id/usersFragment" />
+        <argument
+            android:name="userId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/usersFragment"
         android:name="com.alirizakaygusuz.sosyofi.view.UsersFragment"
         android:label="fragment_users"
-        tools:layout="@layout/fragment_users" />
+        tools:layout="@layout/fragment_users" >
+        <argument
+            android:name="query"
+            app:argType="string" />
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

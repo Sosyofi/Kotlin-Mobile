@@ -1,13 +1,18 @@
 package com.alirizakaygusuz.sosyofi.view
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alirizakaygusuz.sosyofi.R
 import com.alirizakaygusuz.sosyofi.adapter.UserAdapter
@@ -31,6 +36,8 @@ class UserMainFragment : Fragment() {
     private lateinit var user: User
 
     private lateinit var adapter: UserAdapter
+    private var user_id = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +57,13 @@ class UserMainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val intent = activity?.intent
-        var user_id = intent?.getIntExtra("userId", 0)
+
+        user_id = intent?.getIntExtra("userId", 0)!!
+
+        Log.i("SA", "Hİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİ:$user_id")
+
+
+
 
 
         binding.recyclerViewMain.setHasFixedSize(true)
@@ -66,11 +79,6 @@ class UserMainFragment : Fragment() {
 
 
     }
-
-
-
-
-
 
 
     fun click_imvUserMain(view: View) {
@@ -120,6 +128,32 @@ class UserMainFragment : Fragment() {
 
         })
     }
+
+    fun getSearchedUsers(view: View ,query: String, user_id: Int, mContext: Context){
+
+        Log.i("Sa", "as")
+
+        Log.i("Main user_id:", user_id.toString())
+
+        if(user_id != 0){
+
+            val action =
+                com.alirizakaygusuz.sosyofi.view.UserMainFragmentDirections.actionUserMainFragmentToUsersFragment(query , user_id)
+            view?.let { Navigation.findNavController(it).navigate(action) }
+        }
+        else{
+            Toast.makeText(mContext ,"Hesabınıza Tekrardan Giriş Yapınız!!",Toast.LENGTH_LONG).show()
+        }
+
+
+
+    }
+
+
+
+
+
+
 
 
 
