@@ -87,9 +87,12 @@ class UserAdapter(private val mContext: Context, private val followers: List<Use
         }
 
 
+        //4
         holder.btnRowUsersTwitch.setOnClickListener {
             click_btnRowUsersTwitch(it, chosenFollower)
         }
+
+
 
         holder.cardVvUsersRow.setOnClickListener {
 

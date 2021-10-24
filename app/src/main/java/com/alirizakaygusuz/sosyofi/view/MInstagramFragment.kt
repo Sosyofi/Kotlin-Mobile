@@ -1,19 +1,19 @@
 package com.alirizakaygusuz.sosyofi.view
 
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.alirizakaygusuz.sosyofi.databinding.FragmentTwitchBinding
+import com.alirizakaygusuz.sosyofi.databinding.FragmentMinstagramBinding
 import com.alirizakaygusuz.sosyofi.model.User
 
+class MInstagramFragment : Fragment() {
 
-class TwitchFragment : Fragment() {
 
-    private lateinit var binding: FragmentTwitchBinding
+    private lateinit var binding: FragmentMinstagramBinding
+
     private lateinit var user: User
 
 
@@ -27,7 +27,7 @@ class TwitchFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentTwitchBinding.inflate(inflater, container, false)
+        binding = FragmentMinstagramBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,34 +35,31 @@ class TwitchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
         arguments?.let {
-            user =      com.alirizakaygusuz.sosyofi.view.TwitchFragmentArgs.fromBundle(
+            user = com.alirizakaygusuz.sosyofi.view.TwitchFragmentArgs.fromBundle(
                 it).user
         }
 
 
-
-        binding.imgvTwitchLeft.setOnClickListener {
+        binding.imgvInstagramRight.setOnClickListener {
             val action =
-                com.alirizakaygusuz.sosyofi.view.TwitchFragmentDirections.actionTwitchFragmentToUnsplashFragment(
-                user)
+                com.alirizakaygusuz.sosyofi.view.MInstagramFragmentDirections.actionMInstagramFragmentToTwitterFragment(
+                    user)
+
             Navigation.findNavController(it).navigate(action)
-
-
         }
 
-        binding.imgvTwitchRight.setOnClickListener {
+
+        binding.imgvInstagramLeft.setOnClickListener {
             val action =
-                com.alirizakaygusuz.sosyofi.view.TwitchFragmentDirections.actionTwitchFragmentToMInstagramFragment(
+                com.alirizakaygusuz.sosyofi.view.MInstagramFragmentDirections.actionMInstagramFragmentToTwitterFragment(
                     user)
             Navigation.findNavController(it).navigate(action)
 
         }
 
 
-        binding.txtTwitch.text = user.twitch
-
+        binding.txtInstagram.text = user.instagram
 
     }
 

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.alirizakaygusuz.sosyofi.databinding.ActivitySocialBinding
+import com.alirizakaygusuz.sosyofi.model.User
 import com.alirizakaygusuz.sosyofi.service.SosyofiAPIMainReply
 import com.alirizakaygusuz.sosyofi.service.SosyofiAPIReply
 import com.alirizakaygusuz.sosyofi.util.SosyofiAPIUtils
@@ -15,9 +16,13 @@ import retrofit2.Response
 class SocialActivity : AppCompatActivity() {
 
     private var sosyofiAPI = SosyofiAPIUtils.getSosyofiAPI()
+    private lateinit var user: User
+
+    private lateinit var binding: ActivitySocialBinding
 
 
-    private lateinit var  binding: ActivitySocialBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySocialBinding.inflate(layoutInflater)
@@ -27,22 +32,38 @@ class SocialActivity : AppCompatActivity() {
         val user_id = intent.getIntExtra("user_id", 0)
         val followed_userId = intent.getIntExtra("follewedUserId", 0)
 
+
+
         Log.i("EheE::", followed_userId.toString())
         Log.i("Krallll::", user_id.toString())
 
         getUser(followed_userId)
+       // configureFragments()
+
 
         binding.btnSocialFollowOrUnfollow.setOnClickListener {
-           /* if(binding.btnSocialFollowOrUnfollow.text.equals("Takibi Bırak")){
-                unfollow(user_id,followed_userId)
-            }else{
-                follow(user_id,followed_userId)
-            }*/
-            follow(user_id,followed_userId)
+            /* if(binding.btnSocialFollowOrUnfollow.text.equals("Takibi Bırak")){
+                 unfollow(user_id,followed_userId)
+             }else{
+                 follow(user_id,followed_userId)
+             }*/
+            follow(user_id, followed_userId)
         }
 
 
+
+
     }
+
+
+
+
+
+    fun initUser(user: User) {
+        this.user = user
+    }
+
+
 
     fun getUser(user_id: Int) {
 
@@ -64,6 +85,8 @@ class SocialActivity : AppCompatActivity() {
                         binding.txtSocialFollowed.text = it.followed_count.toString()
                         binding.txtSocialFollowers.text = it.followers_count.toString()
 
+                        initUser(it)
+
                     }
 
                 }
@@ -76,17 +99,19 @@ class SocialActivity : AppCompatActivity() {
     }
 
 
-    fun follow(user_id: Int , followed_id: Int){
-        sosyofiAPI.userFollow(user_id , followed_id).enqueue(object : Callback<SosyofiAPIReply> {
+    fun follow(user_id: Int, followed_id: Int) {
+        sosyofiAPI.userFollow(user_id, followed_id).enqueue(object : Callback<SosyofiAPIReply> {
             override fun onResponse(
                 call: Call<SosyofiAPIReply>?,
                 response: Response<SosyofiAPIReply>?,
             ) {
-                if(response != null){
-                    if(response.body()?.success == 1){
+                if (response != null) {
+                    if (response.body()?.success == 1) {
                         binding.btnSocialFollowOrUnfollow.text = "Takibi Bırak"
-                    }else{
-                        Toast.makeText(this@SocialActivity , "Takip etmeyi tekrar deneyiniz!!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@SocialActivity,
+                            "Takip etmeyi tekrar deneyiniz!!",
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -99,18 +124,20 @@ class SocialActivity : AppCompatActivity() {
     }
 
 
-    fun unfollow(user_id: Int , followed_id: Int){
-        sosyofiAPI.userUnfollow(user_id , followed_id).enqueue(object : Callback<SosyofiAPIReply> {
+    fun unfollow(user_id: Int, followed_id: Int) {
+        sosyofiAPI.userUnfollow(user_id, followed_id).enqueue(object : Callback<SosyofiAPIReply> {
             override fun onResponse(
                 call: Call<SosyofiAPIReply>?,
                 response: Response<SosyofiAPIReply>?,
             ) {
-                if(response != null){
+                if (response != null) {
                     Log.i("Message", response.body()?.message.toString())
-                    if(response.body()?.success == 1){
+                    if (response.body()?.success == 1) {
                         binding.btnSocialFollowOrUnfollow.text = "Takip Et"
-                    }else{
-                        Toast.makeText(this@SocialActivity , "Takipten çıkmayı tekrar deneyiniz!!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@SocialActivity,
+                            "Takipten çıkmayı tekrar deneyiniz!!",
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
             }

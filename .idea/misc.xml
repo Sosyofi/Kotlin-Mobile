@@ -26,6 +26,8 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/drawable/custom_shape.xml" value="0.3828125" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/drawable/custom_textfield.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/drawable/custom_userimage.xml" value="0.3685185185185185" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/drawable/ic_arrow_left.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/drawable/ic_arrow_right.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/drawable/ic_error.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/drawable/ic_lock.xml" value="0.3769230769230769" />
@@ -40,12 +42,13 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/font/font.xml" value="0.396875" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_biography.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_social.xml" value="0.33" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_social.xml" value="0.25" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_user.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/activity_user_main.xml" value="0.25" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/fragment_biography.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/fragment_instagram.xml" value="0.22" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/fragment_minstagram.xml" value="0.3378623188405797" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/fragment_register_first.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/fragment_register_second.xml" value="0.5" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/Projelerim/Sosyofi/app/src/main/res/layout/fragment_twitch.xml" value="0.25" />
@@ -64,5 +67,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3378623188405797" />
+      </ProjectState>
+    </option>
   </component>
 </project>
