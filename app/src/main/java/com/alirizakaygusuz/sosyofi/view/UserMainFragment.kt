@@ -93,6 +93,7 @@ class UserMainFragment : Fragment() {
 
 
 
+    //Arayüzde gösterilemedi !!!!!!!
     fun click_btnSearchSpeacial(view: View){
 
         var searchNickname  = binding.txtSpeacialSearch.text.toString()

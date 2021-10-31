@@ -63,6 +63,8 @@ class TwitchFragment : Fragment() {
 
         binding.txtTwitch.text = user.twitch
 
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.loadUrl(user.twitch!!)
 
     }
 
