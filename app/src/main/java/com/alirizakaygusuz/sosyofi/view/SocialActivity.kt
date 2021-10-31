@@ -1,9 +1,12 @@
 package com.alirizakaygusuz.sosyofi.view
 
+import android.graphics.Color
+import android.graphics.Color.GREEN
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.alirizakaygusuz.sosyofi.R
 import com.alirizakaygusuz.sosyofi.databinding.ActivitySocialBinding
 import com.alirizakaygusuz.sosyofi.model.User
 import com.alirizakaygusuz.sosyofi.service.SosyofiAPIMainReply
@@ -20,8 +23,7 @@ class SocialActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySocialBinding
 
-
-
+    private lateinit var followedUserList: ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,31 +40,37 @@ class SocialActivity : AppCompatActivity() {
         Log.i("Krallll::", user_id.toString())
 
         getUser(followed_userId)
-       // configureFragments()
+
 
 
         binding.btnSocialFollowOrUnfollow.setOnClickListener {
-            /* if(binding.btnSocialFollowOrUnfollow.text.equals("Takibi Bırak")){
-                 unfollow(user_id,followed_userId)
-             }else{
-                 follow(user_id,followed_userId)
-             }*/
-            follow(user_id, followed_userId)
+            if (binding.btnSocialFollowOrUnfollow.text.equals("Takibi Bırak")) {
+                unfollow(user_id, followed_userId)
+            } else if (binding.btnSocialFollowOrUnfollow.text.equals("Takip Et")) {
+                Log.i("Sa", "AS")
+                follow(user_id, followed_userId)
+            }
         }
 
-
-
-
     }
 
 
+    fun searchFollowerUser(user: User, followedUserList: ArrayList<User>) {
 
-
-
-    fun initUser(user: User) {
+        Log.i("--------------------------", "-------------------------------------------------------------------------")
         this.user = user
-    }
+        Log.i("Takip", followedUserList.toString())
+        for (f in followedUserList) {
+            if (f.nickname.equals(user.nickname)) {
+                Log.i("Takip", "asdadas")
+                binding.btnSocialFollowOrUnfollow.text = "Takibi Bırak"
+            } else {
+                Log.i("Takip", "Edecek")
+                binding.btnSocialFollowOrUnfollow.text = "Takip Et"
+            }
+        }
 
+    }
 
 
     fun getUser(user_id: Int) {
@@ -78,16 +86,26 @@ class SocialActivity : AppCompatActivity() {
 
                     Log.i("SAA: ", responseBody?.user.toString())
 
-                    responseBody?.user?.let {
 
-                        binding.txtSocialUserName.text = it.nickname
-                        binding.txtSocailBio.text = it.bio
-                        binding.txtSocialFollowed.text = it.followed_count.toString()
-                        binding.txtSocialFollowers.text = it.followers_count.toString()
+                    responseBody?.user?.let { user ->
 
-                        initUser(it)
+                        binding.txtSocialUserName.text = user.nickname
+                        binding.txtSocailBio.text = user.bio
+                        binding.txtSocialFollowed.text = user.followed_count.toString()
+                        binding.txtSocialFollowers.text = user.followers_count.toString()
+
+
+                        //API'da followedUserList dönmüyor!!!
+
+                        responseBody?.followedUserList?.let { followedUserList ->
+                            Log.i("--------------------------", "-------------------------------------------------------------------------")
+
+                            searchFollowerUser(user, followedUserList as ArrayList<User>)
+                        }
+
 
                     }
+
 
                 }
             }
@@ -107,7 +125,9 @@ class SocialActivity : AppCompatActivity() {
             ) {
                 if (response != null) {
                     if (response.body()?.success == 1) {
+                        Log.i("Message", response.body()?.message.toString())
                         binding.btnSocialFollowOrUnfollow.text = "Takibi Bırak"
+                        binding.btnSocialFollowOrUnfollow.setBackgroundColor(Color.parseColor("#FF0000"))
                     } else {
                         Toast.makeText(this@SocialActivity,
                             "Takip etmeyi tekrar deneyiniz!!",
@@ -134,6 +154,7 @@ class SocialActivity : AppCompatActivity() {
                     Log.i("Message", response.body()?.message.toString())
                     if (response.body()?.success == 1) {
                         binding.btnSocialFollowOrUnfollow.text = "Takip Et"
+                        binding.btnSocialFollowOrUnfollow.setBackgroundColor(Color.parseColor("#1CE56C"))
                     } else {
                         Toast.makeText(this@SocialActivity,
                             "Takipten çıkmayı tekrar deneyiniz!!",

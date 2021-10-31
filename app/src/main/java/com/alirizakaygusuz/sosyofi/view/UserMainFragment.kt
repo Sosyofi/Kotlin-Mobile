@@ -77,6 +77,10 @@ class UserMainFragment : Fragment() {
             getUser(it)
         }
 
+        binding.btnSearchSpecial.setOnClickListener {
+            click_btnSearchSpeacial(it)
+        }
+
 
     }
 
@@ -87,6 +91,40 @@ class UserMainFragment : Fragment() {
         view?.let { Navigation.findNavController(it).navigate(action) }
     }
 
+
+
+    fun click_btnSearchSpeacial(view: View){
+
+        var searchNickname  = binding.txtSpeacialSearch.text.toString()
+
+
+        if(!searchNickname.isNullOrEmpty()){
+            for(f in followerUserList){
+                var tempList = ArrayList<User>()
+                if(f.nickname.equals(searchNickname)){
+                    tempList.add(f)
+
+                }
+                if(!tempList.isNullOrEmpty()){
+                    Log.i("Liste var mı ------------------------------------->:", tempList.toString())
+                    adapter = UserAdapter(requireContext(), tempList, user_id)
+                    adapter.notifyDataSetChanged()
+                    binding.recyclerViewMain.adapter = adapter
+
+                }else{
+                    adapter = UserAdapter(requireContext(), followerUserList, user_id)
+                    binding.recyclerViewMain.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }else{
+            adapter = UserAdapter(requireContext(), followerUserList, user_id)
+            binding.recyclerViewMain.adapter = adapter
+            adapter.notifyDataSetChanged()
+        }
+
+
+    }
 
 
 
@@ -115,9 +153,11 @@ class UserMainFragment : Fragment() {
                         adapter = UserAdapter(requireContext(), followerUserList, user_id)
                         Log.i("Liste:", followerUserList.toString())
                         binding.recyclerViewMain.adapter = adapter
+
+
                     }
 
-
+                    adapter.notifyDataSetChanged()
                 }
             }
 
@@ -147,13 +187,5 @@ class UserMainFragment : Fragment() {
 
 
     }
-
-
-
-
-
-
-
-
 
 }
