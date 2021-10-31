@@ -73,6 +73,12 @@ interface SosyofiAPI {
     ):Call<SosyofiAPIMainReply>
 
 
+    @GET("includes/mobile_userTwitter.php")
+    fun fetchAllTwits(
+        @Query("twitter") twitter: String
+    ):Call<TwitterReply>
+
+
 
     @POST("includes/mobile_profileDelete.php")
     @FormUrlEncoded
