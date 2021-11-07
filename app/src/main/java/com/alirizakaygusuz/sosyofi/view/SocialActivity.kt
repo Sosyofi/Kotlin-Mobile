@@ -24,6 +24,7 @@ class SocialActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySocialBinding
 
     private lateinit var followedUserList: ArrayList<User>
+    private lateinit var userFollowedList: ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +36,14 @@ class SocialActivity : AppCompatActivity() {
         val followed_userId = intent.getIntExtra("follewedUserId", 0)
 
 
+        followedUserList = ArrayList<User>()
+        userFollowedList = ArrayList<User>()
 
         Log.i("EheE::", followed_userId.toString())
         Log.i("Krallll::", user_id.toString())
 
         getUser(followed_userId)
+
 
 
 
@@ -53,10 +57,27 @@ class SocialActivity : AppCompatActivity() {
 
     }
 
+    fun setList(tmpList: ArrayList<User>, control: Int) {
+        if (control == 1) {
+            this.followedUserList = tmpList
+        } else if (control == 2) {
+            this.userFollowedList = tmpList
+        }
 
-    fun searchFollowerUser(user: User, followedUserList: ArrayList<User>) {
+        if(!this.followedUserList.isNullOrEmpty() && !this.userFollowedList.isNullOrEmpty()){
+            val tmpUser = this.followedUserList.get(0)
 
-        Log.i("--------------------------", "-------------------------------------------------------------------------")
+            searchFollowerUser(tmpUser , this.userFollowedList)
+        }
+
+
+    }
+
+
+    fun searchFollowerUser(user: User, followedUserList: List<User>) {
+
+        Log.i("--------------------------",
+            "-------------------------------------------------------------------------")
         this.user = user
         Log.i("Takip", followedUserList.toString())
         for (f in followedUserList) {
@@ -65,9 +86,10 @@ class SocialActivity : AppCompatActivity() {
                 binding.btnSocialFollowOrUnfollow.text = "Takibi Bırak"
             } else {
                 Log.i("Takip", "Edecek")
-                binding.btnSocialFollowOrUnfollow.text = "Takip Et"
+                binding.btnSocialFollowOrUnfollow.text = "Takibi Et"
             }
         }
+
 
     }
 
@@ -87,25 +109,28 @@ class SocialActivity : AppCompatActivity() {
 
 
                     responseBody?.user?.let { user ->
+                        if (followedUserList.isNullOrEmpty()) {
+                            binding.txtSocialUserName.text = user.nickname
+                            binding.txtSocailBio.text = user.bio
+                            binding.txtSocialFollowed.text = user.followed_count.toString()
+                            binding.txtSocialFollowers.text = user.followers_count.toString()
 
-                        binding.txtSocialUserName.text = user.nickname
-                        binding.txtSocailBio.text = user.bio
-                        binding.txtSocialFollowed.text = user.followed_count.toString()
-                        binding.txtSocialFollowers.text = user.followers_count.toString()
 
+                            //API'da followedUserList dönmüyor!!!
 
-                        //API'da followedUserList dönmüyor!!!
-
-                        responseBody?.followedUserList?.let { followedUserList ->
-                            Log.i("--------------------------", "-------------------------------------------------------------------------")
-
-                            searchFollowerUser(user, followedUserList as ArrayList<User>)
+                            responseBody?.followedUserList?.let { followedUserList ->
+                                Log.i("--------------------------",
+                                    "-------------------------------------------------------------------------")
+                                setList(followedUserList as ArrayList<User>, 1)
+                                //searchFollowerUser(user, followedUserList as ArrayList<User>)
+                            }
+                        } else {
+                            responseBody?.followedUserList?.let { userFollowedList ->
+                                setList(userFollowedList as ArrayList<User>, 2)
+                            }
                         }
 
-
                     }
-
-
                 }
             }
 
