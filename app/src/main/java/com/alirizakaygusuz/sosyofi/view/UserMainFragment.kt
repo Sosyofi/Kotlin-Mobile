@@ -60,7 +60,8 @@ class UserMainFragment : Fragment() {
 
         user_id = intent?.getIntExtra("userId", 0)!!
 
-        Log.i("SA", "Hİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİ:$user_id")
+        Log.i("SA",
+            "Hİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİ:$user_id")
 
 
 
@@ -87,46 +88,69 @@ class UserMainFragment : Fragment() {
 
     fun click_imvUserMain(view: View) {
         val action =
-            com.alirizakaygusuz.sosyofi.view.UserMainFragmentDirections.actionUserMainFragmentToBiographyFragment(user)
+            com.alirizakaygusuz.sosyofi.view.UserMainFragmentDirections.actionUserMainFragmentToBiographyFragment(
+                user)
         view?.let { Navigation.findNavController(it).navigate(action) }
     }
 
 
-
     //Arayüzde gösterilemedi !!!!!!!
-    fun click_btnSearchSpeacial(view: View){
+    fun click_btnSearchSpeacial(view: View) {
 
-        var searchNickname  = binding.txtSpeacialSearch.text.toString()
+        var searchNickname = binding.txtSpeacialSearch.text.toString()
+        var tempList = ArrayList<User>()
 
+        if (!searchNickname.isNullOrEmpty()) {
 
-        if(!searchNickname.isNullOrEmpty()){
-            for(f in followerUserList){
-                var tempList = ArrayList<User>()
-                if(f.nickname.equals(searchNickname)){
+            for (f in followerUserList) {
+
+                if (f.nickname.equals(searchNickname)) {
                     tempList.add(f)
 
                 }
-                if(!tempList.isNullOrEmpty()){
-                    Log.i("Liste var mı ------------------------------------->:", tempList.toString())
-                    adapter = UserAdapter(requireContext(), tempList, user_id)
-                    adapter.notifyDataSetChanged()
-                    binding.recyclerViewMain.adapter = adapter
-
-                }else{
-                    adapter = UserAdapter(requireContext(), followerUserList, user_id)
-                    binding.recyclerViewMain.adapter = adapter
-                    adapter.notifyDataSetChanged()
-                }
             }
-        }else{
+
+            if (!tempList.isNullOrEmpty()) {
+                Log.i("Liste var mı ------------------------------------->:", tempList.toString())
+                adapter.notifyDataSetChanged()
+                adapter = UserAdapter(requireContext(), tempList, user_id)
+                binding.recyclerViewMain.adapter = adapter
+
+                adapter.notifyDataSetChanged()
+
+
+            } else {
+                Log.i("Liste yok ------------------------------------->:", tempList.toString())
+                adapter = UserAdapter(requireContext(), tempList, user_id)
+                binding.recyclerViewMain.adapter = adapter
+                adapter.notifyDataSetChanged()
+                Toast.makeText(context , "Aranan kişi Listede bulunamamıştır", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            tempList.clear()
             adapter = UserAdapter(requireContext(), followerUserList, user_id)
             binding.recyclerViewMain.adapter = adapter
             adapter.notifyDataSetChanged()
+            Toast.makeText(context , "Aramak İstediğiniz Kişiyi Yazınız", Toast.LENGTH_SHORT).show()
+
         }
 
 
     }
 
+
+    fun setFollowedUserList(followedUserList: List<User>) {
+
+        followerUserList = followedUserList
+
+
+        adapter = UserAdapter(requireContext(), followerUserList, user_id)
+        Log.i("Liste:", followerUserList.toString())
+        binding.recyclerViewMain.adapter = adapter
+
+        adapter.notifyDataSetChanged()
+
+    }
 
 
     fun getUser(user_id: Int) {
@@ -149,16 +173,11 @@ class UserMainFragment : Fragment() {
                     }
 
                     responseBody?.followedUserList?.let {
-                        followerUserList = responseBody?.followedUserList
-
-                        adapter = UserAdapter(requireContext(), followerUserList, user_id)
-                        Log.i("Liste:", followerUserList.toString())
-                        binding.recyclerViewMain.adapter = adapter
+                        setFollowedUserList(responseBody?.followedUserList)
 
 
                     }
 
-                    adapter.notifyDataSetChanged()
                 }
             }
 
@@ -169,22 +188,23 @@ class UserMainFragment : Fragment() {
         })
     }
 
-    fun getSearchedUsers(view: View ,query: String, user_id: Int, mContext: Context){
+    fun getSearchedUsers(view: View, query: String, user_id: Int, mContext: Context) {
 
         Log.i("Sa", "as")
 
         Log.i("Main user_id:", user_id.toString())
 
-        if(user_id != 0){
+        if (user_id != 0) {
 
             val action =
-                com.alirizakaygusuz.sosyofi.view.UserMainFragmentDirections.actionUserMainFragmentToUsersFragment(query , user_id)
+                com.alirizakaygusuz.sosyofi.view.UserMainFragmentDirections.actionUserMainFragmentToUsersFragment(
+                    query,
+                    user_id)
             view?.let { Navigation.findNavController(it).navigate(action) }
+        } else {
+            Toast.makeText(mContext, "Hesabınıza Tekrardan Giriş Yapınız!!", Toast.LENGTH_LONG)
+                .show()
         }
-        else{
-            Toast.makeText(mContext ,"Hesabınıza Tekrardan Giriş Yapınız!!",Toast.LENGTH_LONG).show()
-        }
-
 
 
     }

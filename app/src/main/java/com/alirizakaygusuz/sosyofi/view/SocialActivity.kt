@@ -47,7 +47,6 @@ class SocialActivity : AppCompatActivity() {
             if (binding.btnSocialFollowOrUnfollow.text.equals("Takibi Bırak")) {
                 unfollow(user_id, followed_userId)
             } else if (binding.btnSocialFollowOrUnfollow.text.equals("Takip Et")) {
-                Log.i("Sa", "AS")
                 follow(user_id, followed_userId)
             }
         }
