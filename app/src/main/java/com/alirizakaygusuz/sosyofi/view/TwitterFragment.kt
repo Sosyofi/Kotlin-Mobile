@@ -9,9 +9,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.alirizakaygusuz.sosyofi.adapter.TwitterAdapter
 import com.alirizakaygusuz.sosyofi.adapter.UserAdapter
 
 import com.alirizakaygusuz.sosyofi.databinding.FragmentTwitterBinding
+import com.alirizakaygusuz.sosyofi.model.Twitter
 import com.alirizakaygusuz.sosyofi.model.User
 import com.alirizakaygusuz.sosyofi.service.SosyofiAPIMainReply
 import com.alirizakaygusuz.sosyofi.service.TwitterReply
@@ -24,11 +27,11 @@ import retrofit2.Response
 class TwitterFragment : Fragment() {
 
     private lateinit var binding: FragmentTwitterBinding
-
+    private lateinit var adapter: TwitterAdapter
     private lateinit var user: User
     private var sosyofiAPI = SosyofiAPIUtils.getSosyofiAPI()
 
-    private lateinit var twitList :ArrayList<String>
+    private lateinit var twitList: List<Twitter>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +50,10 @@ class TwitterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.recyclerVwTwitter.setHasFixedSize(true)
+        binding.recyclerVwTwitter.layoutManager = LinearLayoutManager(context)
+
 
 
 
@@ -77,9 +84,9 @@ class TwitterFragment : Fragment() {
 
 
 
-        if(user.twitter.isNullOrEmpty()){
-            Toast.makeText(context,"Twitter Hesabı Bulunmamaktadır", Toast.LENGTH_LONG)
-        }else{
+        if (user.twitter.isNullOrEmpty()) {
+            Toast.makeText(context, "Twitter Hesabı Bulunmamaktadır", Toast.LENGTH_LONG)
+        } else {
             getTwitterPosts(user.twitter!!)
         }
 
@@ -87,7 +94,7 @@ class TwitterFragment : Fragment() {
     }
 
 
-    fun getTwitterPosts(twitterAdress: String){
+    fun getTwitterPosts(twitterAdress: String) {
         sosyofiAPI.fetchAllTwits(twitterAdress).enqueue(object : Callback<TwitterReply> {
             override fun onResponse(
                 call: Call<TwitterReply>?,
@@ -96,26 +103,18 @@ class TwitterFragment : Fragment() {
                 if (response != null) {
                     val responseBody = response.body()
 
-                    twitList = ArrayList<String>()
-
                     responseBody?.let {
+                        Log.i(",Replyyyy", it.toString())
 
-                        Log.i("Twitss", it.twitList.toString())
+                        val twitList: List<Twitter> = responseBody.twitList
 
-                        for(t in it.twitList){
-                            twitList.add(t)
-                        }
+                        adapter = TwitterAdapter(requireContext(), twitList)
+                        Log.i("Liste:", twitList.toString())
+                        binding.recyclerVwTwitter.adapter = adapter
+
 
                     }
 
-                    if(!twitList.isNullOrEmpty()){
-                        context?.let {
-                            val adapter = ArrayAdapter(it, android.R.layout.simple_list_item_1, twitList)
-                            binding.listViewTwitter.adapter = adapter
-                        }
-                    }else{
-                        Toast.makeText(context ,"Atılmış Twit Bulunamadı", Toast.LENGTH_LONG)
-                    }
 
                 }
             }

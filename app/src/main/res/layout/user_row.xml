@@ -9,7 +9,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardVvUsersRow"
+        android:id="@+id/carVvTwitterRow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cardVvUsersRow">
+            app:layout_constraintTop_toTopOf="@+id/carVvTwitterRow">
 
             <TextView
                 android:id="@+id/txtRowUsersUserName"

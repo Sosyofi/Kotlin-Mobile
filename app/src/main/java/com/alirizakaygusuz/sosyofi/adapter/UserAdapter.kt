@@ -32,7 +32,7 @@ class UserAdapter(private val mContext: Context, private val followers: List<Use
 
 
         init {
-            cardVvUsersRow = view.findViewById(R.id.cardVvUsersRow)
+            cardVvUsersRow = view.findViewById(R.id.carVvTwitterRow)
             txtRowUsersUserName = view.findViewById(R.id.txtRowUsersUserName)
             txtRowUserFollowersNumber = view.findViewById(R.id.txtRowUserFollowersNumber)
             btnRowUsersTwitch = view.findViewById(R.id.btnRowUsersTwitch)

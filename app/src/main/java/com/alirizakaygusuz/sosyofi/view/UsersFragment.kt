@@ -26,12 +26,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class UsersFragment: Fragment() {
+class UsersFragment : Fragment() {
 
     private lateinit var binding: FragmentUsersBinding
     private var sosyofiAPI = SosyofiAPIUtils.getSosyofiAPI()
     private lateinit var adapter: UserAdapter
-    private var user_id:Int = 0
+    private var user_id: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,11 +62,11 @@ class UsersFragment: Fragment() {
             query =
                 UsersFragmentArgs.fromBundle(
                     it).query
-            user_id =  UsersFragmentArgs.fromBundle(
+            user_id = UsersFragmentArgs.fromBundle(
                 it).userId
         }
 
-        if(query != null){
+        if (query != null) {
             searchUser(query!!)
         }
 
@@ -95,14 +95,9 @@ class UsersFragment: Fragment() {
 
                         val userList: List<User> = responseBody.followedUserList
 
-
-
-                            adapter = UserAdapter(requireContext(), userList,  user_id)
-                            Log.i("Liste:", userList.toString())
-                            binding.recyclerVwFUsers.adapter = adapter
-
-
-
+                        adapter = UserAdapter(requireContext(), userList, user_id)
+                        Log.i("Liste:", userList.toString())
+                        binding.recyclerVwFUsers.adapter = adapter
 
                         //Navigation.findNavController(view).navigate(action)
                         //Navigation.findNavController(view).navigate(action)
